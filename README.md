@@ -1,1 +1,1 @@
-# PythonCourseSTM
+# PythonCoursePro
