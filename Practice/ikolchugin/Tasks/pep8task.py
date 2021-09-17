@@ -15,8 +15,9 @@ class Shuffler:  # названия классов в формате ClassName
         mp3s = []  # неправильный отступ
         for root, directories, files in os.walk(dirname):
             for file in files:
-                # значение file[-3:] = 'mp3', 'mp3' != '.mp3',
-                if file[-4:] == '.mp3':
+                # Рекомендуется проверять начало или конец  строки
+                # при помощи startswith и endswith
+                if file.endswith('.mp3'):
                     mp3s.append([root, file])
         # добавил пустую строку, чтобы отделить обход структуры ФС
         # от обработки результата обхода
@@ -47,7 +48,7 @@ class Shuffler:  # названия классов в формате ClassName
 
         for root, directories, files in os.walk(dirname):
             for file in files:
-                if file[-4:] == '.mp3':  # аналогично стр. 19
+                if file.endswith('.mp3'):  # аналогично стр. 19
                     mp3s.append([root, file])  # список это [], а не {}
         # добавил пустую строку, чтобы отделить обход структуры ФС
         # от обработки результата обхода
