@@ -1,8 +1,15 @@
 user_name = input('Введите имя: ')
 user_surname = input('Введите фамилию: ')
 user_age = int(input('Введите возраст: '))
-print('Ваше имя: ' + user_name)
-print('Ваша фамилия: ' + user_surname)
-print('Ваш возраст: ' + str(user_age))
-print(user_name + ' ' + user_surname + ', ты закончил школу примерно ' + str(user_age - 17) + ' лет назад')
+sex = input('Ваш пол (м/ж): ')
+print('Неужели это {} {}?!'.format(user_name, user_surname))
+print('Не виделись лет {}, со школы! '.format(user_age - 17))
+
+if sex == 'м':
+    print('Ну ты и разжирел!')
+elif sex == 'ж':
+    print('Отлично выглядишь!')
+else:
+    print('Ну мне пора.')
+
 
