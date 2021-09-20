@@ -3,7 +3,7 @@ import os
 import hashlib
 import ast
 import argparse
-# Импорты модулей только текущего проекта
+# Импорты модулей только для текущего проекта
 #from time import *
 from time import time
 
@@ -35,7 +35,7 @@ class Shuffler:
 #        f = open(output, 'r')
         f = open(output, 'r+')
         f.write(str(self.map))
-#Я бы еще закрыл defer f.Close()
+#Я бы еще закрыл файлик defer f.Close()
         f.close()
 #Определения методов внутри класса разделяются одной пустой строкой.
 
@@ -44,7 +44,7 @@ class Shuffler:
     def restore(self, dirname, filename):
 #Выравнивание + ошибка в Access Mode r+ (read + write)
 #          with open(filename, '+') as f:
-        with open(filename, 'r+') as f:
+        with open(filename, 'r+') as f:         
             self.map = ast.literal_eval(f.read())
 #Выравнивание
 #         mp3s = []
@@ -71,8 +71,9 @@ class Shuffler:
 
 
 #Для аргументов точно какой-то косяк
-#По всей видимости для восстановления м.б. 2 варианта: default("restore.info") 
-#и конкретный путь до файла ("-o path")
+#По всей видимости для метода rename м.б. 2 варианта: default("restore.info") 
+#и конкретный путь до файла ("-o path").
+#Проверку в main() можно убрать добавив значение по умолчанию для аргумента
 def parse_arguments():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest='subcommand', help='subcommand help')
@@ -87,14 +88,15 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
-#    
+#Название переменной в нижнем регистре
 #    Shuffler = shuffler()
     shuffler = Shuffler()
     if args.subcommand == 'rename':
+# Если output указан то "сбрасываем" в него
           if args.output:
-                shuffler.rename(args.dirname, 'restore.info')
-          else:
                 shuffler.rename(args.dirname, args.output)
+          else:
+                shuffler.rename(args.dirname, 'restore.info')
     elif args.subcommand == 'restore':
         shuffler.restore(args.dirname, args.restore_map)
     else:
