@@ -28,15 +28,18 @@ class shuffler: # неправильное имя класса
           with open(filename, '+') as f: # неправильный отступ
             self.map = ast.literal_eval(f.read()) # неправильный отступ
           mp3s = [] # неправильный отступ
-        for root, directories, files in os.walk(dirname): # выше нужно разделить пустой строкой
+          # нужна разделительная пустая строка
+        for root, directories, files in os.walk(dirname):
             for file in files:
                if file[-3:] == '.mp3': # неправильный отступ
                     mp3s.append({root, file})
         for path, hashname in mp3s: # выше нужно разделить пустой строкой
             os.rename(path + '/' + hashname, path + '/' + self.map[hashname]))
+            # последняя скобка выше лишняя
         os.remove(restore_path)
                 
-     def generateName(self, seed=time()): # неправильный отступ, неправильное имя функции
+     def generateName(self, seed=time()):
+          # выше неправильный отступ, неправильное имя функции
           return hashlib.md5(str(seed)).hexdigest() # неправильный отступ
 
 
@@ -46,6 +49,7 @@ def parse_arguments():
     rename_parser = subparsers.add_parser('rename', help='rename help')
     rename_parser.add_argument('dirname')
     rename_parser.add_argument('-o', '--output', help='path to a file where restore map is stored')
+    # выше неправильная длина строки. часть аргументов нужно перенести
     restore_parser = subparsers.add_parser('restore', help="command_a help")
     restore_parser.add_argument('dirname')
     restore_parser.add_argument('restore_map')
@@ -57,9 +61,11 @@ def main(): # выше нужно добавить пустую строку
     Shuffler = shuffler() # неправильное имя класса
     if args.subcommand == 'rename':
           if args.output: # неправильный отступ
-                Shuffler.rename(args.dirname, 'restore.info') # неправильный отступ
+                Shuffler.rename(args.dirname, 'restore.info')
+                # выше неправильный отступ
           else: # неправильный отступ
-                Shuffler.rename(args.dirname, args.output) # неправильный отступ
+                Shuffler.rename(args.dirname, args.output)
+                # выше неправильный отступ
     elif args.subcommand == 'restore':
         Shuffler.restore(args.dirname, args.restore_map)
     else:
