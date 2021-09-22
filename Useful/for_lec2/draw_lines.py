@@ -8,16 +8,16 @@ canvas.pack()
 img = PhotoImage(width=WIDTH, height=HEIGHT)
 canvas.create_image((WIDTH/2, HEIGHT/2), image=img, state="normal")
 
-x = 25
+x = 100
 y = 2
 while y < 480:
     img.put("#ffffff", (x, y))
     y += 1
 
-x = 26
-y = 2
-while y < 480:
-    img.put("#ffffff", (x, y))
-    y += 1
+# x = 26
+# y = 2
+# while y < 480:
+#     img.put("#ffffff", (x, y))
+#     y += 1
 
 mainloop()
