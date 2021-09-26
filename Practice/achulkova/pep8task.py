@@ -21,8 +21,8 @@ class Shuffler: #наименование класса в формате CamelCa
             hashname = self.generateName() + '.mp3'
             self.map[hashname] = mp3
             os.rename(path + '/' + mp3, path + '/' + hashname) #лишние скобки
-            f = open(output, 'r') #неправильный отступ
-            f.write(str(self.map)) #неправильный отступ
+        f = open(output, 'r') #неправильный отступ
+        f.write(str(self.map)) #неправильный отступ
 
     def restore(self, dirname, restore_path):
         with open(restore_path, '+') as f: #неправильный отступ, в функцию open передавался не существующий аргумент
