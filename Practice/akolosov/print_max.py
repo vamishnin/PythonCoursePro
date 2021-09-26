@@ -10,11 +10,11 @@ print_max(1, 11)
 
 print_max(b=2, a=55)
 
-my_list=[3, 99]
+my_list = [3, 99]
 print_max(*my_list)
 
-my_dict={'b': 4, 'a': 22}
+my_dict = {'b': 4, 'a': 22}
 print_max(**my_dict)
 
-my_dict={'b': 77}
+my_dict = {'b': 77}
 print_max(**my_dict, a=5)

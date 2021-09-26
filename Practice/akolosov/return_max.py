@@ -6,6 +6,6 @@ def return_max(a: int, b: int):
     return res
 
 
-a=9
-b=11
+a = 9
+b = 11
 print(f"Max of {a=} and {b=} is {return_max(a ,b)}")
