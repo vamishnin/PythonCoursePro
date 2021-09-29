@@ -44,8 +44,8 @@ class Tank:
             print(f'{self.team}_{self.label} готов к битве')
 
     def attack(self, target=None):
-        if type(target) is not Tank:
-            print('Цель атаки не указана')
+        if not isinstance(target, Tank):
+            print('Цель атаки не танк')
             self._ammo -= 1
         elif self.dead:
             print('Атака невозможна, танк выведен из строя')
@@ -83,6 +83,7 @@ t5 = Tank(team='Yellow', armor=120, health=40)
 #
 t1.attack()
 t1.attack(t2)
+t1.attack(t3)
 t1.attack(t3)
 t1.attack(t3)
 t1.attack(t3)
