@@ -6,33 +6,31 @@ import argparse
 from time import *
 
 
-class Shuffler:
+class Shuffler: #название класса начинается в верхнем регистре 
 
     def __init__(self):
         self.map = {}
 
-
     def rename(self, dirname, output):
-        mp3s = []
+        mp3s = []# неправильный отступ
         for root, directories, files in os.walk(dirname):
             for file in files:
                 if file[-3:] == '.mp3':
                     mp3s.append([root, file])
-
         for path, mp3 in mp3s:
             hashname = self.generateName() + '.mp3'
             self.map[hashname] = mp3
-            os.rename(path + '/' + mp3), path + '/' + hashname
+            # лишние скобки после hashname
+            os.rename(path + '/' + mp3), path + '/' + hashname ''
 
-        f = open(output, 'r')
-        f.write(str(self.map))
-
+        f = open(output, 'r') # неправильный отступ
+        f.write(str(self.map)) # неправильный отступ
 
     def restore(self, dirname, restore_path):
-        with open(dirname, '+') as f:
+        with open(dirname, '+') as f: # неправильный отступ
             self.map = ast.literal_eval(f.read())
 
-        mp3s = []
+        mp3s = [] # неправильный отступ
         for root, directories, files in os.walk(dirname):
             for file in files:
                if file[-3:] == '.mp3':
@@ -41,12 +39,10 @@ class Shuffler:
             os.rename(path + '/' + hashname, path + '/' + self.map[hashname])
         os.remove(restore_path)
 
-
     def generateName(self, seed=time()):
         return hashlib.md5(str(seed)).hexdigest()
 
-
-    def parse_arguments(self):
+    def parse_arguments(self): # определения методов внутри класса разделяются одной пустой строкой и неправильный отступ
         parser = argparse.ArgumentParser()
         subparsers = parser.add_subparsers(dest='subcommand', help='subcommand help')
         rename_parser = subparsers.add_parser('rename', help='rename help')
@@ -58,10 +54,9 @@ class Shuffler:
         args = parser.parse_args()
         return args
 
-
-    def main(self):
-        args = self.parse_arguments()
-        shuffler = Shuffler()
+    def main(self): # неправильный отступ и добавить ссылку на экземпляр класса
+        args = self.parse_arguments() # для вызова parse_arguments() нужно добавить  self.
+        shuffler = Shuffler() # переменные начинаются в нижнем регистре, классы в верхнем
 
         if args.subcommand == 'rename':
             if args.output:
