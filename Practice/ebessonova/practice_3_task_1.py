@@ -1,12 +1,12 @@
 def chars_to_num():
     b = ''
     while 1:
-        try:
-            a = input('Write number ')
-            if a == 'stop' or a == 'Stop' or a == 'STOP':
-                break
-            b += str(int(a))
-        except ValueError:
+        a = input('Write number ')
+        if a.lower() == 'stop':
+            break
+        if a.isdecimal():
+            b += a
+        else:
             print('Its not a number')
     return b
 

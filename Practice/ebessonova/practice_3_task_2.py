@@ -1,5 +1,4 @@
-def poly():
-    a = input('Write a word ')
+def poly(a):
     mid = int(len(a) / 2)
 
     if len(a) % 2 == 0:
@@ -13,6 +12,6 @@ def poly():
         print('Not a polyndrom')
 
 
-
-poly()
+a = input('Write a word ')
+poly(a)
 

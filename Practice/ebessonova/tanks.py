@@ -1,6 +1,4 @@
 class Tank:
-    coordinates = [0, 0]
-    id = 0
 
     def __init__(self, x, y):
         self.coordinates = [x, y]
