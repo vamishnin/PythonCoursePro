@@ -44,21 +44,21 @@ class Panzer:
         else:
             self.__ammunition = Panzer.__max_ammunition
 
-    @staticmethod
+    @classmethod
     def get_max_armor_power():
         """
         :return: returns max possible armor level
         """
         return Panzer.__max_armor_power
 
-    @staticmethod
+    @classmethod
     def get_max_ammunition():
         """
         :return: returns max possible bullets count
         """
         return Panzer.__max_ammunition
 
-    @staticmethod
+    @classmethod
     def get_max_fire_power():
         """
         :return: returns max possible bullets count that can be used simultaneously
