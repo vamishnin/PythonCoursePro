@@ -1,6 +1,6 @@
 # Варианты с max()
 def print_max(a, b):
-    print(f"(print_max)Biggest number is: {max(int(a), int(b))}")  #
+    print(f"(print_max)Biggest number is: {max(int(a), int(b))}")
 
 
 def is_max(a, b):
