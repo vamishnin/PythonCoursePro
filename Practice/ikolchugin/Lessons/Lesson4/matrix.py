@@ -31,8 +31,7 @@ def find_columns(_matrix, _val):
 
 
 def del_columns(_matrix, _columns):
-    rev_columns = list(_columns)
-    rev_columns.reverse()
+    rev_columns = tuple(sorted(_columns, reverse=True))
 
     for row in _matrix:
         i = 0
