@@ -7,9 +7,7 @@ while counter != len(arr):
     counter_in = counter + 1
     while counter_in != len(arr):
         if arr[counter_in] < arr[counter]:
-            buff = arr[counter]
-            arr[counter] = arr[counter_in]
-            arr[counter_in] = buff
+            arr[counter], arr[counter_in] = arr[counter_in], arr[counter]
         counter_in += 1
     counter += 1
 

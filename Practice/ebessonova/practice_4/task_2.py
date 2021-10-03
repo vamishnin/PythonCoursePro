@@ -1,6 +1,6 @@
 while 1:
     a = input('Input 5-digit number ')
-    if a.isdecimal() == False or len(a) != 5:
+    if not a.isdecimal() or len(a) != 5:
         print('Try again')
     else:
         break

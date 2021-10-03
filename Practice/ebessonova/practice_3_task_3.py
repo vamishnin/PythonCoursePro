@@ -2,12 +2,12 @@ import random
 
 
 def guess_num(low, high):
-    riddle_number = random.randrange(int(low), int(high))
+    riddle_number = random.randint(int(low), int(high))
     while 1:
-        in_num = input(f'Guess number from interval [{low}, {high}] : ')
-        if int(in_num) > riddle_number:
+        in_num = int(input(f'Guess number from interval [{low}, {high}] : '))
+        if in_num > riddle_number:
             print('Need lower')
-        elif int(in_num) < riddle_number:
+        elif in_num < riddle_number:
             print('Need higher')
         else:
             print('You puzzled it out')
