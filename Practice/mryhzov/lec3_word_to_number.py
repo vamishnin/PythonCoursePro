@@ -5,10 +5,10 @@ while a.lower() != 'stop':
     a = input('введите цифру или "stop": ')
     if a == 'stop':    # если ввели 'stop', то дальнейшие действия в теле цикла не производим - возвр. на проверку
         continue
-    elif not a.isdigit():
-        print(f'"{a}" не является цифрой')
-    else:
+    if a.isdigit():
         num = num + a
+    else:
+        print(f'"{a}" не является цифрой')
 print(f'ваше число: {num}')
 
 
