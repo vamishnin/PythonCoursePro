@@ -5,6 +5,7 @@ def exclude_column(lst, value):
             for each in lst:
                 each.pop(index)
             exclude_column(lst, value)
+            break
     return
 
 
