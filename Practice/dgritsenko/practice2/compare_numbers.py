@@ -5,9 +5,9 @@ def print_larger_number(a, b):
     :param a: First value
     :param b: Second value
     """
-    if (a > b):
+    if a > b:
         print(f"larger number is {a}")
-    elif (a < b):
+    elif a < b:
         print(f"larger number is {b}")
     else:
         print(f"a == b == {a}")
@@ -20,7 +20,7 @@ def return_larger_number(a, b):
     :param b: Second value
     :return: maximum of a and b
     """
-    if (a > b):
+    if a > b:
         return a
     else:
         return b

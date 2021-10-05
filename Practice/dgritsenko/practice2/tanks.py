@@ -5,15 +5,14 @@ class Tank:
     Base tank class
     """
 
-    __health = 100
-    __is_alive = True
-
     def __init__(self,
                  model = "T-34",
                  weight_t = 30,
                  width_mm = 3000,
                  height_mm = 2405,
                  length_mm = 5920):
+        self.__health = 100
+        self.__is_alive = True
         self.__model = model
         self.weight_t = weight_t
         self.width_mm = 3000

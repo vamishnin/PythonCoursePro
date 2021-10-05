@@ -12,7 +12,7 @@ class shuffler:
         self.map = {}
 
     def rename(self, dirname, output):
-        mp3s = []
+        mp3s = [] # уехал отступ
         for root, directories, files in os.walk(dirname):
             for file in files:
                 if file[-3:] == '.mp3':
@@ -20,24 +20,24 @@ class shuffler:
         for path, mp3 in mp3s:
             hashname = self.generateName() + '.mp3'
             self.map[hashname] = mp3
-            os.rename(path + '/' + mp3, path + '/' + hashname)
-            f = open(output, 'r')
-            f.write(str(self.map))
+            os.rename(path + '/' + mp3, path + '/' + hashname) # лишние скобки
+        f = open(output, 'w') # уехал отступ + файл был открыт на чтение
+        f.write(str(self.map)) # уехал отступ
 
     def restore(self, dirname, restore_path):
-        with open(filename, '+') as f:
-            self.map = ast.literal_eval(f.read())
-            mp3s = []
+        with open(filename, '+') as f:  # уехал отступ, filename не определен
+            self.map = ast.literal_eval(f.read())   # уехал отступ
+        mp3s = []   # уехал отступ
         for root, directories, files in os.walk(dirname):
             for file in files:
-               if file[-3:] == '.mp3':
+                if file[-3:] == '.mp3': # В отступе 3 пробела вместо 4-х
                     mp3s.append({root, file})
         for path, hashname in mp3s:
-            os.rename(path + '/' + hashname, path + '/' + self.map[hashname])
+            os.rename(path + '/' + hashname, path + '/' + self.map[hashname]) # лишние скобки
         os.remove(restore_path)
-                
-    def generateName(self, seed=time()):
-        return hashlib.md5(str(seed)).hexdigest()
+
+        def generateName(self, seed=time()):    # уехал отступ
+            return hashlib.md5(str(seed)).hexdigest()   # уехал отступ
 
 
 def parse_arguments():
