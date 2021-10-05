@@ -9,18 +9,22 @@ def is_max(a, b):
 
 # Варианты с if
 def print_max2(a, b):
-    if int(a) > int(b):
+    a = int(a)
+    b = int(b)
+    if a > b:
         print(f"(print_max2)Biggest number is: {a})")
-    elif int(a) < int(b):
+    elif a < b:
         print(f"(print_max2)Biggest number is: {b}")
     else:
         print('(print_max2)Numbers is equal')
 
 
 def is_max2(a, b):
-    if int(a) > int(b):
+    a = int(a)
+    b = int(b)
+    if a > b:
         return a
-    elif int(a) < int(b):
+    elif a < b:
         return b
     return None
 

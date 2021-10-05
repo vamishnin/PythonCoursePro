@@ -1,27 +1,21 @@
 '''
 Практика №3
-Q1 - input_to_sum() сложение чисел. Два варианта. С регулярными выражениями (import re) в комментариях и с replace()
+Q1 - input_to_sum() сложение чисел.
 Q2 - is_palindrome(str) Проверка слова или фразы на полиндромность
 '''
-#import re
 
 def input_to_sum():
-    temp = float()
+    temp = ''
     while True:
         x = input('Enter number or "stop": ')
-        #temp_x = re.split("\.|-", x)
-        #temp_x = ''.join(temp_x)
-        temp_x = x.replace('-', '').replace('.', '')
-        print(temp_x)
-        if temp_x.isdigit():
-            temp += float(x)
-            if temp % 1 == 0:
+        if x.lower() == 'stop':
+            if temp % 1 == 0:  # Если число целое, то приведение к int() чтобы убрать .0 в выводе
                 print(f'Sum of latest numbers: {int(temp)}')
             else:
                 print(f'Sum of latest numbers: {temp}')
-        elif x.lower() == 'stop':
-            print('Stopped')
             break
+        if x.replace('-', '').replace('.', '').isdigit():
+            temp += float(x)
         else:
             print(f'Wrong value: {x}')
 
@@ -30,9 +24,9 @@ input_to_sum()
 
 
 def is_palindrome(a):
-    temp_A = a.replace(' ', '')
-    temp_B = a[::-1].replace(' ', '')
-    if temp_A.lower() == temp_B.lower():
+    temp_A = a.replace(' ', '').lower()
+    temp_B = temp_A[::-1]
+    if temp_A == temp_B:
         return True
     return False
 
