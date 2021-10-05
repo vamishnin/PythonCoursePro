@@ -8,8 +8,8 @@ from PIL import Image, ImageDraw
 def image_match_template(current_img_path, pattern_img_path):
     current_img = Image.open(current_img_path)
     pattern_img = Image.open(pattern_img_path)
-    current_img_arr = cv2.cvtColor(numpy.array(current_img), cv2.COLOR_RGB2BGR)
-    pattern_img_arr = cv2.cvtColor(numpy.array(pattern_img), cv2.COLOR_RGB2BGR)
+    current_img_arr = cv2.cvtColor(numpy.array(current_img), cv2.COLOR_RGB2BGR555)
+    pattern_img_arr = cv2.cvtColor(numpy.array(pattern_img), cv2.COLOR_RGB2BGR555)
     res = cv2.matchTemplate(current_img_arr, pattern_img_arr, cv2.TM_CCOEFF_NORMED)
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
     size = pattern_img_arr.shape
