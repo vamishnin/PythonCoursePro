@@ -38,5 +38,3 @@ if __name__ == "__main__":
     max_val, closest_area = image_match_template(args.source, args.pattern)
     res_file_name = screen_graphical_result(args.source, closest_area)
     print(f"Pattern found with confidence {max_val}. Open {res_file_name} for details")
-
-
