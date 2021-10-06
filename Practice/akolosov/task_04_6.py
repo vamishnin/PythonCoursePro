@@ -8,30 +8,33 @@ def remove_number(lst: list, number: int):
             if sublst[i] == number:
                 to_remove.add(i)
     
+    to_remove = list(to_remove)
+    to_remove.sort(reverse=True)
+    to_remove = tuple(to_remove)
+    
     for sublst in lst:
-        i = 0
         for index in to_remove:
-            if (index - i) < len(sublst):
-                del sublst[index-i]
-                i += 1
+            if index < len(sublst):
+                del sublst[index]
             else:
-                break
-    ### The second way of the second part:
-    # to_remove = list(to_remove)
-    # to_remove.reverse()
-    # to_remove = tuple(to_remove)
-    # for sublst in lst:
-    #     for index in to_remove:
-    #         if index < len(sublst):
-    #             del sublst[index]
-    #         else:
-    #             continue
+                continue
 
     return lst
 
 
-arr = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
-       [11, 12, 13, 2, 15, 16, 2, 18, 19],
-       [21, 2, 23, 24, 25, 26, 27, 28, 29]]
+if __name__ == "__main__":
+    arr = [
+            [1,  2,  3,  4,  5,  6,  7,  8,  9],
+            [11, 12, 13, 2,  15, 16, 2,  18, 19],
+            [21, 2,  23, 24, 25, 26, 27, 28, 29]
+    ]
 
-print(remove_number(arr, 2))
+    print(remove_number(arr, 2))
+
+    arr = [
+           [5, 5, 5, 5, 5, 5, 5, 5, 3],
+           [5, 5, 5, 5, 3, 5, 5, 5, 5],
+           [5, 5, 5, 5, 5, 5, 5, 5, 5]
+    ]
+
+    print(remove_number(arr, 3))

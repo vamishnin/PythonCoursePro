@@ -13,7 +13,7 @@ def ispalindrome(a: str, b=0):
     
     if a.isalpha():
         res = 1
-        for i in range(0,len(a)//2):
+        for i in range(len(a)//2):
             if a[i] != a[-1-i]:
                 res = 0
                 break
@@ -22,13 +22,14 @@ def ispalindrome(a: str, b=0):
     return res
 
 
-str = 'reviver'
-print(f'Input: {str=}, result: {ispalindrome(str)}')
+if __name__ == "__main__":
+    string = 'reviver'
+    print(f'Input: {string=}, result: {ispalindrome(string)}')
 
-str = 'qwerty'
-print(f'Input: {str=}, result: {ispalindrome(str)}')
+    string = 'qwerty'
+    print(f'Input: {string=}, result: {ispalindrome(string)}')
 
-str = 'а роза упала на лапу азора'
-mode = 1
-print(f'Input: {str=}, result: {ispalindrome(str)}')
-print(f'Input: {str=} & {mode=}, result: {ispalindrome(str, mode)}')
+    string = 'а роза упала на лапу азора'
+    mode = 1
+    print(f'Input: {string=}, result: {ispalindrome(string)}')
+    print(f'Input: {string=} & {mode=}, result: {ispalindrome(string, mode)}')

@@ -7,9 +7,11 @@ def format_str(string: str, dic: dict):
             string = string.replace(key,dic[key])
     return string
 
-str = "qwerty"
-print(format_str(str, {'qw': 'az'}))
 
-str = 'Brave New World'
-dict = {'Brave': 'О дивный', 'New': 'новый', 'World': 'мир'}
-print(format_str(str, dict))
+if __name__ == "__main__":
+    str = "qwerty"
+    print(format_str(str, {'qw': 'az'}))
+
+    str = 'Brave New World'
+    dict = {'Brave': 'О дивный', 'New': 'новый', 'World': 'мир'}
+    print(format_str(str, dict))
