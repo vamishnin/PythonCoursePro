@@ -4,28 +4,26 @@ from tempfile import mktemp
 
 class WrapStrToFile:
     def __init__(self):
-        self.filepath = mktemp()
+        self._filepath = mktemp()
 
     @property
     def content(self):
         try:
-            f = open(self.filepath, 'r')
+            with open(self._filepath, 'r') as f:
+                f_content = f.read()
         except FileNotFoundError:
             print("File doesn't exist")
         else:
-            f_content = f.read()
-            f.close()
             return f_content
 
     @content.setter
     def content(self, value):
-        f = open(self.filepath, 'w')
-        f.write(value)
-        f.close()
+        with open(self._filepath, 'w') as f:
+            f.write(value)
 
     @content.deleter
     def content(self):
-        os.remove(self.filepath)
+        os.remove(self._filepath)
 
 
 wstf = WrapStrToFile()
