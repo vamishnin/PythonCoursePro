@@ -8,13 +8,11 @@ def remove_number(lst: list, number: int):
             if sublst[i] == number:
                 to_remove.add(i)
     
-    to_remove = list(to_remove)
-    to_remove.sort(reverse=True)
-    to_remove = tuple(to_remove)
+    to_remove = tuple(sorted(to_remove, reverse=True))
     
     for sublst in lst:
         for index in to_remove:
-            if index < len(sublst):
+            if index < len(sublst): # protection from bad data (not rectangle)
                 del sublst[index]
             else:
                 continue
