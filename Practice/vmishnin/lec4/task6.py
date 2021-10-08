@@ -20,7 +20,7 @@ if __name__ == '__main__':
         w = int(input("Columns: "))
         mat = generator(h, w)
         printer(mat)
-        ids = []
+        ids = set()
         x = int(input("Enter the number you want to remove: "))
     except ValueError:
         print("Wrong values. Exiting.")
@@ -29,10 +29,10 @@ if __name__ == '__main__':
     for i in mat:
         if x in i:
             # print(f"x={x} in line {i}")
-            ids.append(i.index(x))
+            ids.add(i.index(x))
 
     if ids:
-        for i in ids:
+        for i in sorted(ids, reverse=True):
             for row in mat:
                 row.pop(i)
     else:
