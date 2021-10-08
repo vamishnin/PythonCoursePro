@@ -3,15 +3,15 @@
 """
 
 
-def palindrome(str):
-    if str == str[::-1] and not str.isspace():
+def palindrome(line):
+    if line == line[::-1] and not line.isspace():
         return True
     return False
 
 
-str = input("Введите строку: ")
+line = input("Введите строку: ")
 
-if palindrome(str.lower()):
+if palindrome(line.lower()):
     print("Это палиндром")
 else:
     print("Это НЕ палиндром")
