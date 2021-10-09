@@ -1,6 +1,8 @@
 def is_palidrome(word):
-    if not(isinstance(word, str)):
+    if not isinstance(word, str):
         return False
+
+    word = word.lower()
 
     i = 0
     while i < len(word) / 2:
@@ -9,5 +11,5 @@ def is_palidrome(word):
         i += 1
     return True
 
-word = 'topot'
+word = 'Топот'
 print(f"{word} {'is' if is_palidrome(word) else 'is not'} palindrome")

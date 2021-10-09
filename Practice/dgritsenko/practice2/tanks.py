@@ -20,25 +20,25 @@ class Tank:
         self.length_mm = 5920
 
     def attack(self, other):
-        print(f"Tank {self.__model} attacks tank {other.getModel()}!")
-        other.decreaseHealth(DAMAGE_VALUE)
+        print(f"Tank {self.__model} attacks tank {other.get_model()}!")
+        other.decrease_health(DAMAGE_VALUE)
 
-    def moveToPoint(self, x, y):
+    def move_to_point(self, x, y):
         print(f"Tank {self.__model} moves to point x = {x}, y = {y}!")
 
-    def getHealth(self):
+    def get_health(self):
         return self.__health
 
-    def getModel(self):
+    def get_model(self):
         return self.__model
 
-    def decreaseHealth(self, delta):
-        if (self.__is_alive):
+    def decrease_health(self, delta):
+        if self.__is_alive:
             self.__health -= delta
-            if (self.__health < 0):
+            if self.__health < 0:
                 self.__is_alive = False
 
-    def isAlive(self):
+    def is_alive(self):
         return self.__is_alive
 
 
@@ -46,7 +46,7 @@ class Tank:
 t1 = Tank()
 t2 = Tank("PzKpfw IV", 20, 2900, 2650, 5600)
 
-print(f"tank {t2.getModel()} has health = {t2.getHealth()}")
+print(f"tank {t2.get_model()} has health = {t2.get_health()}")
 t1.attack(t2)
-print(f"tank {t2.getModel()} has health = {t2.getHealth()} after attack by {t1.getModel()}")
+print(f"tank {t2.get_model()} has health = {t2.get_health()} after attack by {t1.get_model()}")
 
