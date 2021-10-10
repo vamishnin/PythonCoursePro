@@ -3,10 +3,10 @@ num = ''
 a = ''
 while a.lower() != 'stop':
     a = input('введите цифру или "stop": ')
-    if a == 'stop':    # если ввели 'stop', то дальнейшие действия в теле цикла не производим - возвр. на проверку
+    if a.lower() == 'stop':
         continue
     if a.isdigit():
-        num = num + a
+        num += a
     else:
         print(f'"{a}" не является цифрой')
 print(f'ваше число: {num}')
@@ -19,7 +19,7 @@ while True:
     if y.lower() == 'stop':
         break
     if y.isdigit():
-        x = x + y
+        x += y
     else:
         print(f'"{y}" не является цифрой')
 

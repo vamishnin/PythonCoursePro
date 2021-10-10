@@ -11,12 +11,7 @@ while 1:    # ввод и проверка границ диапазона
         print(f'Вы ввели некорректный диапазон')
 
 
-def rand(x, y):      # Загадываем число
-    z = randint(x, y)
-    return z
-
-
-secret = rand(low, hight)
+secret = randint(low, hight)
 
 # угадываем число
 while 1:
