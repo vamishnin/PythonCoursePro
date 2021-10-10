@@ -22,6 +22,7 @@ if __name__ == "__main__":
     person_one = Man("Vasya")
     print(f"{person_one.name} is ordered to solve task")
     person_one.solve_task()
+
     person_second = Pupil("Peten'ka")
     print(f"{person_second.name} is ordered to solve task")
     person_second.solve_task()
