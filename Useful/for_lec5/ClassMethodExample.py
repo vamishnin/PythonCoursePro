@@ -1,17 +1,17 @@
 class Parent:
-    num = 0
+    _num = 0
 
     def __new__(cls):
-        cls.num += 1
+        cls._num += 1
         return super().__new__(cls)
 
     @classmethod
     def get_num_of_objects(cls):
-        return cls.num
+        return cls._num
 
 
 class Child(Parent):
-    num = 0
+    _num = 0
 
 
 p1 = Parent()
