@@ -1,9 +1,9 @@
 class Singleton:
     obj = None
 
-    def __new__(cls):
-        if cls.obj == None:
-            cls.obj = super().__new__(cls)
+    def __new__(cls, *args, **kwargs):
+        if cls.obj is None:
+            cls.obj = super().__new__(cls, *args, **kwargs)
         return cls.obj
 
 s1 = Singleton()
