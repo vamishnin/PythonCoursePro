@@ -6,6 +6,7 @@ class Singleton:
             cls.obj = super().__new__(cls, *args, **kwargs)
         return cls.obj
 
+
 s1 = Singleton()
 s2 = Singleton()
 assert(id(s1)==id(s2))  # True
