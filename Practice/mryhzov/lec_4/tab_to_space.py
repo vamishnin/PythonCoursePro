@@ -1,3 +1,5 @@
+# необходимо заменить все символы табуляции на четыре пробела, либо же
+# заменить все комбинации из четырех символов пробела на символ табуляции
 tab_str = """
     Привет, как дела?
         Как поживаешь \t?
@@ -13,9 +15,9 @@ def tab_to_space(s):
     return s
 
 
-def space_to_tab(t):
-    t = t.replace(' '*4, '\t')
-    return t
+def space_to_tab(s):
+    s = s.replace(' '*4, '\t')
+    return s
 
 
 print(tab_to_space(tab_str))
