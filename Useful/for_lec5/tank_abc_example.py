@@ -1,4 +1,7 @@
-class BaseTank:
+from abc import ABCMeta, abstractmethod
+
+
+class BaseTank(metaclass=ABCMeta):
     def __init__(self, power, speed):
         self._power = power
         self._speed = speed
@@ -7,11 +10,13 @@ class BaseTank:
     def move(self, inc):
         self._x += inc * self._speed
 
+    @abstractmethod
     def shoot(self):
-        print('')
+        pass
 
+    @abstractmethod
     def show(self):
-        print('')
+        pass
 
 
 class Tank(BaseTank):
