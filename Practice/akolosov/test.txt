@@ -1,0 +1,3 @@
+abcd    ef    ghikl    mn
+qwerty    word_is_power
+zx    cvbnm
