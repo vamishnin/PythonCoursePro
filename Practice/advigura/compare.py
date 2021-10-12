@@ -1,5 +1,3 @@
-
-
 def mymax(a, b):
     if a > b:
         return a
