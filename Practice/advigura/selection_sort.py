@@ -1,7 +1,6 @@
 def is_terminate(word):
     return (word == "Stop" or word == "stop" or word == "STOP")
 
-# result = ''
 myarray = []
 while True:
     user_number = input('Enter digit for array. Enter "stop" to finish ')
@@ -26,4 +25,4 @@ while i < len(myarray) - 1:
     myarray[i], myarray[min_ind] = myarray[min_ind], myarray[i]
     i += 1
     
-print(f'Sorteed array {myarray}')
+print(f'Sorted array {myarray}')
