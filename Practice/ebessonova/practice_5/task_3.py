@@ -5,27 +5,24 @@ import tempfile
 class WrapStrToFile:
 
     def __init__(self):
-        self.filepath = tempfile.mktemp(dir='./')
+        self.__filepath = tempfile.mktemp(dir='./')
 
     @property
     def content(self):
         try:
-            f = open(self.filepath, 'r')
-            f_text = f.read()
-            f.close()
-            return f_text
+            with open(self.__filepath, 'r') as f:
+                return f.read()
         except FileNotFoundError:
             return 'File doesn\'t exist'
 
     @content.setter
     def content(self, value):
-        f = open(self.filepath, 'w')
-        f.write(value)
-        f.close()
+        with open(self.__filepath, 'w') as f:
+            f.write(value)
 
     @content.deleter
     def content(self):
-        os.remove(self.filepath)
+        os.remove(self.__filepath)
 
 
 wstf = WrapStrToFile()
