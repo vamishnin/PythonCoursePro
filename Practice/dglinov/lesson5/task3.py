@@ -55,18 +55,18 @@ if __name__ == '__main__':
     #print(WrapStrToFile.content)
     #<property object at 0x7fb289461cc0>
     
-    strtofile = WrapStrToFile()
+    str_to_file = WrapStrToFile()
 
-    del strtofile.content
+    del str_to_file.content
     
-    print(strtofile.content)
+    print(str_to_file.content)
     
-    strtofile.content = line
-    print(strtofile.content)
+    str_to_file.content = line
+    print(str_to_file.content)
     
-    strtofile.content = line[::-1]
-    print(strtofile.content)
+    str_to_file.content = line[::-1]
+    print(str_to_file.content)
     
     sleep(2)
-    del strtofile.content
-    print(strtofile.content)
+    del str_to_file.content
+    print(str_to_file.content)
