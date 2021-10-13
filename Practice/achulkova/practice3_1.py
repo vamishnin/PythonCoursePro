@@ -1,6 +1,6 @@
-s=''
+s = ''
 
-while (a:= input('Введите числовой символ: ').lower()) != 'stop':
+while (a := input('Введите числовой символ: ').lower()) != 'stop':
     if a.isdecimal():
         s += a
         print(s)
