@@ -4,7 +4,7 @@ class Hero:
 
     @property
     def action(self):
-        return self._action.do_action()
+        return self._action
 
     @action.setter
     def action(self, new_action):
@@ -28,10 +28,10 @@ class Fly(Action):
 
 
 h = Hero(Action())
-actions = [Action(), Run(), Fly()]
+actions = [Action(), Run(), Fly(), 123]
 while True:
     a = int(input("Select action: 0-Action, 1-Run, 2-Fly: "))
     h.action = actions[a]
-    h.action
+    h.action.do_action()
 
 
