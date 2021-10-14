@@ -16,13 +16,11 @@ m = [{
 
 tmpl = "<name> <surname> was born in <bdate>, <nationality>"
 
-def InsTemplate(tmpl_string, lst):
-    for dct in lst:
-        buf = tmpl_string
-        
+def fill_template(tmpl_string, dct):
         for key in dct:
-            buf = buf.replace("<" + key + ">", dct[key])
-        
-        print(buf)
+            tmpl_string = tmpl_string.replace("<" + key + ">", dct[key])
+        return tmpl_string
 
-InsTemplate(tmpl, m)
+if __name__ == '__main__':
+    for dct in m:
+        print(fill_template(tmpl, dct))

@@ -12,6 +12,8 @@ from os import remove
 from tempfile import mktemp
 from time import sleep
 
+class FailedToWriteIntoFileError(Exception):
+    pass
 
 class WrapStrToFile():
    
@@ -35,7 +37,7 @@ class WrapStrToFile():
             with open(self.__filepath, 'w') as f:
                 f.write(line)
             print('')
-        except FileNotFoundError:
+        except FailedToWriteIntoFileError:
             return 'Не удается записать новое значения атрибута в файл'
 
 #При попытке удаления атрибута удаляем и файл

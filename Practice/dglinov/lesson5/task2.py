@@ -10,9 +10,10 @@ class Pupil(Man):
 
     def solve_task(self):
         sleep(randint(3,6))
-        print("I`m not ready yet")
+        return super().solve_task()
 
-p = Pupil('Petr')
+if __name__ == '__main__':
+    p = Pupil('Petr')
 
-print(p.name)
-p.solve_task()
+    print(p.name)
+    p.solve_task()
