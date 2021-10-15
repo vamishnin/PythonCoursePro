@@ -1,33 +1,30 @@
 # Реализовать алгоритм сортировки выбором.
-
 lst1 = [0, 3, 24, 2, 3, 7]
-lst2 = []    # Не смог корректно реализовать замену символов в первичном списке, ввел второй
-i = 0
-while i <= 5:
-    min_num = min(lst1)
-    ind_min = lst1.index(min_num)
-    lst1.pop(ind_min)
-    lst2.append(min_num)
-    i = i + 1
-print(lst2)
 
 
+def sort_list(lst):
+    i = 0
+    while i < len(lst):
+        n = i
+        next_n = i + 1
+        while next_n < len(lst):
+            if lst[next_n] < lst[n]:
+                n = next_n
+            next_n += 1
+        lst[i], lst[n] = lst[n], lst[i]
+        i += 1
+    return lst
 
 
+print(sort_list(lst1))
 
-# lst1 = [0, 3, 24, 2, 3, 7]
-# for i in lst1:
+# lst1 = [8, 3, 24, 2, 0, 5, 7]
+# lst2 = []
+# i = 0
+# len1 = len(lst1)
+# while i <= (len1-1):
 #     min_num = min(lst1)
 #     ind_min = lst1.index(min_num)
-#     lst1[0], lst1[ind_min] = lst1[ind_min], lst1[0]
-#     print(lst1)
-
-# lst1 = lst1[ind:]
-# for i in lst1:
-#     min_num = min(lst1)
-#     ind = lst1.index(min_num)
-#     # print(min_num)
-#     # print(ind)
-#     lst1.insert(0, min_num)
-#     lst1.pop(ind+1)
-#     print(lst1)
+#     lst2.append(lst1.pop(ind_min))
+#     i += 1
+# print(lst2)

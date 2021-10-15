@@ -1,13 +1,13 @@
 from random import randint
 from time import sleep
 
-#  Unable to get repr for <class '__main__.Man'>
+
 class Man:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, _name):
+        self._name = _name
 
     def __repr__(self):
-        return f'Hello, i am {self.name}'
+        return f'Hello, i am {self._name}'
 
     def solve_task(self):
         print("I'm not ready yet")
