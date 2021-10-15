@@ -1,6 +1,6 @@
-P
+Paragraph
 text1
-P
+Paragraph
 text2
-P
+Paragraph
 text3
