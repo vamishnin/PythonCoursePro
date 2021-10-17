@@ -1,14 +1,16 @@
 def mymax(*args, **kwargs):
-    a = list(args)
-    print(f'{max(a)}')
-    return max(a)
+    print(f'{max(args)}')
+    return max(args)
     
     
 mymax(1,2,3,4)
     
 def menumerate(lst):
-    for i in len(lst):
+    result = []
+    for i in range(len(lst)):
         print(f'{i} {lst[i]}')
+        result.append([i, lst[i]])
+    return result
         
         
 l = [1, 2, 3, 4, 5]
