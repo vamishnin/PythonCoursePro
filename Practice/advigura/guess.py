@@ -1,4 +1,6 @@
 import random
+
+
 myrange = int(input('Enter range '))
 # number = 23 
 number = random.randint(0, myrange)
