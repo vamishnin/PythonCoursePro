@@ -1,9 +1,9 @@
-DAMAGE_VALUE = 90
-
 class Tank:
     """
     Base tank class
     """
+
+    _DAMAGE_VALUE = 90
 
     def __init__(self,
                  model="T-34",
@@ -21,7 +21,7 @@ class Tank:
 
     def attack(self, other):
         print(f"Tank {self.__model} attacks tank {other.get_model()}!")
-        other.decrease_health(DAMAGE_VALUE)
+        other.decrease_health(Tank._DAMAGE_VALUE)
 
     def move_to_point(self, x, y):
         print(f"Tank {self.__model} moves to point x = {x}, y = {y}!")

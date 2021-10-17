@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class Operation(Enum):
+class Operation(IntEnum):
     WHITESPACES_2_TABS = 1
     TABS_2_WHITESPACES = 2
 
@@ -20,18 +20,14 @@ def convert_tabs_whitespaces(path, operation):
 
     data = []
     with open(path, "rt") as f:
-        data = f.readlines()
+        for line in f:
+            if operation == Operation.WHITESPACES_2_TABS:
+                line = space_to_tab(line)
+            else:
+                line = tab_to_space(line)
+            data.append(line)
 
     print(repr(data))
-
-    idx = 0
-    for line in data:
-        if operation == Operation.WHITESPACES_2_TABS:
-            line = space_to_tab(line)
-        else:
-            line = tab_to_space(line)
-        data[idx] = line
-        idx += 1
 
     with open(path, "w") as f:
         for line in data:

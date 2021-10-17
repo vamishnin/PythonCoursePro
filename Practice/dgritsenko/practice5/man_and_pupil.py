@@ -16,9 +16,12 @@ class Pupil(Man):
     __pause_low_bound_sec = 3
     __pause_high_bound_sec = 6
 
+    def __init__(self, name):
+        super().__init__(name)
+
     def solve_task(self):
         sleep(random.randint(self.__pause_low_bound_sec, self.__pause_high_bound_sec))
-        print('Im not ready yet!')
+        super().solve_task()
 
 
 man = Man('Ivan')
