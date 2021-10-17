@@ -19,9 +19,9 @@ class ParagraphIter:
                 buffer = ''
             # на случай, если символ параграфа состоит из нескольких символов,
             # находим конец предыдущего параграфа
-            if buffer[len(buffer) - len(self.__paragraph_symbol):len(buffer)] == self.__paragraph_symbol:
+            if buffer.endswith(self.__paragraph_symbol):
                 buffer_sent = True
-                # возврашаем тект параграфа без символа параграфа
+                # возврашаем текст параграфа без символа параграфа
                 if len(buffer[:len(buffer) - len(self.__paragraph_symbol)]) != 0:
                     return buffer[:len(buffer) - len(self.__paragraph_symbol)]
             else:
@@ -36,12 +36,7 @@ class ParagraphIter:
 
 
 with open('text_P.txt', 'r') as f:
-    p = ParagraphIter(f, 'Paragraph')
-    try:
-        print(next(p))
-        print(next(p))
-        print(next(p))
-        print(next(p))
-    except StopIteration:
-        print('Too much "next" command')
+    for p in ParagraphIter(f, 'Paragraph'):
+        print(p)
+
 
