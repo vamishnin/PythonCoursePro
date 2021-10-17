@@ -11,19 +11,17 @@ class WrapStrToFile:
         # попытка чтения из файла, в случае успеха возвращаем содержимое 
         # в случае неудачи возвращаем 'File doesn't exist' 
         try:
-            f = open(self.__filepath, 'r')
-            file_content = f.read()
-            f.close()
-            return file_content
+            with open(self.__filepath, 'r') as f:
+                file_content = f.read()
+                return file_content
         except Exception:
             return 'File is not exist'
 
     @content.setter 
     def content(self, value): 
         # попытка записи в файл указанного содержимого 
-        f = open(self.__filepath, 'w')
-        f.write(value)
-        f.close()
+        with open(self.__filepath, 'w') as f:
+            f.write(value)
 
     @content.deleter 
     def content(self): 
