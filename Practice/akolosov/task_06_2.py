@@ -3,7 +3,7 @@
 #     for i, x in enumerate(source): 
 #         result[i] *= m 
 #     return result
-def multiplier(m=1, source=[1,2,3]):
+def multiplier(m=1, source=(1,2,3)):
     return [m * i for i in source]
 
 
