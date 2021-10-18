@@ -1,6 +1,6 @@
 '''
 Практика №3
-Q1 - input_to_sum() сложение чисел.
+Q1 - input_to_sum() сложение чисел. input_to_conn() - конкатенация чисел
 Q2 - is_palindrome(str) Проверка слова или фразы на полиндромность
 '''
 
@@ -12,6 +12,7 @@ def input_to_sum():
         if x.replace('-', '').replace('.', '').isdigit():
             temp += float(x)
         elif x.lower() == 'stop':
+            print('Stopped')
             break
         else:
             print(f'Wrong value: {x}')
@@ -21,8 +22,21 @@ def input_to_sum():
         print(f'Sum of latest numbers: {temp}')
 
 
-input_to_sum()
+def input_to_conn():
+    temp = ''
+    while True:
+        x = input('Enter number or "stop": ')
+        if x.replace('-', '').replace('.', '').isdigit():
+            temp += x
+        elif x.lower() == 'stop':
+            print('Stopped')
+            break
+        else:
+            print(f'Wrong value: {x}')
+    print(f'Concatenated numbers: {temp}')
 
+#input_to_sum()
+input_to_conn()
 
 def is_palindrome(a):
     temp_A = a.replace(' ', '').lower()

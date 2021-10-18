@@ -1,6 +1,5 @@
 def symbol_replase(data, sym: str = '\t', repsym: str = '    '):
-    x = data
-    return x.replace(sym, repsym)
+    return data.replace(sym, repsym)
 
 
 source = 'qwe ert    yui\tasd\tfgh jkl    zxc'

@@ -60,7 +60,8 @@ class Shuffler:  # названия классов в формате ClassName
     # при первом вызове будет задано значение seed = time(),
     # которое не будет меняться при последующих вызовах функции,
     # всегда  будет возвращаться одинаковое значение, это неправильно
-    def generate_name(self, seed=None):
+    @staticmethod
+    def generate_name(seed=None):
         t_seed = time() if seed is None else seed
         # неправильный отступ
         # параметром md5  является бинарное значение, а не строка.
