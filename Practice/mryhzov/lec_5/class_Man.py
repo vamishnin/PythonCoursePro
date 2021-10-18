@@ -3,8 +3,8 @@ from time import sleep
 
 
 class Man:
-    def __init__(self, _name):
-        self._name = _name
+    def __init__(self, name):    # name не обязан зваться так же, как атрибут, с которым он связывается внутри __init__
+        self._name = name    # Защищенным мы делаем именно self._name
 
     def __repr__(self):
         return f'Hello, i am {self._name}'
