@@ -7,12 +7,8 @@ def space_replace(val):
     return print(new_str)
 
 
-str1 = '''
-    1tab  2tab    3tab    4tab
-'''
-str2 = '''
-    1space  2space    3space    4space
-'''
+str1 = '1tab  2tab    3tab    4tab'
+str2 = '1space  2space    3space    4space'
 
 print(str1, str2)
 

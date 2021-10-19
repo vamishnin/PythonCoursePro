@@ -1,10 +1,16 @@
+#Написать класс Man, который принимает имя в конструкторе.
+#Имеет метод solve_task, который просто выводит "I'm not ready yet".
+
+#Написать класс Pupil, у которого переопределен метод solve_task.
+#На этот раз он будет думать от 3 до 6 секунд (c помощью метода sleep библиотеки time и randint библиотеки random).
+
 import time
 import random
 import tempfile
 
 class Man:
     def __init__(self, name):
-        self.name = name
+        self._name = name
 
     def solve_task(self):
         print("I'm not ready yet")
@@ -13,14 +19,4 @@ class Pupil(Man):
 
     def solve_task(self):
         time.sleep(random.randint(3, 6))
-
-class WrapStrToFile:
-
-    def __init__(self, filepath):
-        self.filepath = tempfile.mktemp()
-
-    # def mktemp(self):
-    #     self.name = tempfile.mktemp()
-
-
-
+        print("I'm not ready yet")
