@@ -9,4 +9,4 @@ with open("dumpfile", "rb") as f:
 print(f"j1={j1}")
 print(f"j2={j2}")
 
-print(j1.salary + j2.salary)
+print(j1.get_salary() + j2.get_salary())
