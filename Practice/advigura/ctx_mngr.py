@@ -10,4 +10,5 @@ class TimeContextManager:
         print(f'finished at {current_time}')
         print(f'elapsed time {current_time - self.__start_time}')
     
-with TimeContextManager(): time.sleep(3)
+with TimeContextManager():
+    time.sleep(3)

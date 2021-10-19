@@ -1,7 +1,8 @@
 def multiplier(m=1, source=[1,2,3]):      
-    result = source.copy()
+    # result = source.copy()
+    result = []
     for i, x in enumerate(source): 
-        result[i] *= m
+        result.append(source[i] * m)
     return result
 
 src = [1,2,3]

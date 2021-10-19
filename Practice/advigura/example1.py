@@ -1,6 +1,11 @@
 def mymax(*args, **kwargs):
-    print(f'{max(args)}')
-    return max(args)
+    res = args[0]
+    for i in args:
+        if i > res:
+            res = i
+            
+    print(f'{res}')
+    return res
     
     
 mymax(1,2,3,4)
