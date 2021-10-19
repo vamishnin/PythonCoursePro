@@ -1,10 +1,12 @@
 def tab_replace(val):
     new_str = str(val).replace('\t', '    ')
-    return print(new_str)
+    print(new_str)
+    return new_str
 
 def space_replace(val):
     new_str = str(val).replace('    ' , '\t')
-    return print(new_str)
+    print(new_str)
+    return new_str
 
 
 str1 = '1tab  2tab    3tab    4tab'

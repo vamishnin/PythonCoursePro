@@ -6,7 +6,7 @@
 
 import time
 import random
-import tempfile
+
 
 class Man:
     def __init__(self, name):

@@ -10,7 +10,7 @@ def sort_list(nums):
             if nums[j] < nums[min_idx]:
                  min_idx = j
         if min_idx != i:
-                 nums[i], nums[min_idx] = nums[min_idx], nums[i]
+            nums[i], nums[min_idx] = nums[min_idx], nums[i]
 
 sort_list(arr2)
 print(arr2)
