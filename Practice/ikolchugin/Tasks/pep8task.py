@@ -34,8 +34,8 @@ class Shuffler:  # названия классов в формате ClassName
         # добавил пустую строку,
         # чтобы отделить обработку результата обхода от записи файла
         # исправлены отступы, изменён режим открытия файла для записи.
-        f = open(output, 'w')
-        f.write(str(self.map))
+        with open(output, 'w') as f:
+            f.write(str(self.map))
 
     def restore(self, dirname, restore_path):
         # отступы исправлены
