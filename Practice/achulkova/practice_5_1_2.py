@@ -4,7 +4,7 @@ from random import randint
 
 class Man:
     def __init__(self, name: str):
-        self.name = name
+        self._name = name
         print(f"{name} says: ")
 
     def solve_task(self):
@@ -13,16 +13,16 @@ class Man:
 
 class Pupil(Man):
     def __init__(self, name: str):
-        self.name = name
+        self._name = name
         print(f"{name} says: ")
 
-    def solve_task(self):
+    def solve_task_pupil(self):
         sleep(randint(3, 6))
-        print("I'm not ready yet")
+        super().solve_task()
 
 
 man1 = Man('Ivan')
 man1.solve_task()
 man2 = Pupil('Petr')
-man2.solve_task()
+man2.solve_task_pupil()
 

@@ -1,15 +1,13 @@
 arr = [0, 3, 24, 2, 3, 7]
-j = 0
 
+for i in range(len(arr)-1):
+    min_el = arr[i]
+    min_ind = i
+    for j in range(i+1, len(arr)):
+        if arr[j] < min_el:
+            min_el = arr[j]
+            min_ind = j
 
-def my_min(a, b):
-    arr_min = min(a[b:])
-    index_min = a.index(arr_min, b)
-    return index_min
+    arr[i], arr[min_ind] = arr[min_ind], arr[i]
 
-
-for i in arr:
-    x = my_min(arr, j)
-    arr[j], arr[x] = arr[x], arr[j]
-    j += 1
-print(arr)
+print(f'{arr=}')
