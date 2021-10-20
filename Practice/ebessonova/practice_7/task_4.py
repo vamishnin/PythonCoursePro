@@ -1,21 +1,26 @@
 import os
 import time
+import enum
+
+
+class Lifetime(enum.IntEnum):
+    FILE_LIFETIME = 1
+    DIR_LIFETIME = 2
 
 
 def path_deleter(path_name):
     now = time.time()
-    file_lifetime = 1
-    dir_lifetime = 2
+
     for obj in os.listdir(path_name):
         abs_obj = os.path.join(path_name, obj)
         if os.path.isfile(abs_obj):
-            if now - os.path.getctime(abs_obj) > file_lifetime:
+            if now - os.path.getctime(abs_obj) > Lifetime.FILE_LIFETIME:
                 print(f'del file {abs_obj} lifetime {now - os.path.getctime(abs_obj)}')
                 os.remove(abs_obj)
         elif os.path.isdir(abs_obj) and len(os.listdir(abs_obj)):
             path_deleter(abs_obj)
         elif os.path.isdir(abs_obj) and not len(os.listdir(abs_obj)):
-            if now - os.path.getctime(abs_obj) > dir_lifetime:
+            if now - os.path.getctime(abs_obj) > Lifetime.DIR_LIFETIME:
                 print(f'del dir {abs_obj} lifetime {now - os.path.getctime(abs_obj)}')
                 os.rmdir(abs_obj)
 
