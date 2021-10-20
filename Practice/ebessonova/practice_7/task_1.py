@@ -1,4 +1,4 @@
-import datetime as dt  # оптимальный способ импорта datetime
+import datetime as dt
 
 
 def weekdays_counter(date1, date2):
@@ -8,9 +8,7 @@ def weekdays_counter(date1, date2):
     if date1 > date2:
         date1, date2 = date2, date1
 
-    same_week = False
-    if diff < 6 and date1.weekday() < date2.weekday():
-        same_week = True
+    same_week = diff < 6 and date1.weekday() < date2.weekday()
     # учет рабочих дней первой недели из диапазона
     if 0 <= date1.weekday() < 5:
         diff -= 6 - date1.weekday()
