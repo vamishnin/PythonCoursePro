@@ -17,7 +17,7 @@ def bad_days_count(date_start, date_end):
     '''
     bad_days = 0
     happy_days = [5,6]
-    new_year_holydays = [each for each in range(1,11)]
+    new_year_holidays = [each for each in range(1,11)]
     
     rf_holidays = [
         '23.02',
@@ -31,7 +31,7 @@ def bad_days_count(date_start, date_end):
     for i in gen_days(date_start, date_end):
         if i.weekday() in happy_days:
             continue
-        elif i.month == 1 and i.day in new_year_holydays:
+        elif i.month == 1 and i.day in new_year_holidays:
             continue
         elif i.strftime('%d.%m') in rf_holidays:
             continue
