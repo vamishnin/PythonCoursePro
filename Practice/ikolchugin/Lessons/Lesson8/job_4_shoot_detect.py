@@ -11,9 +11,8 @@ def find_circles(raw_image):
     gray = cv2.cvtColor(raw_image, cv2.COLOR_BGR2GRAY)
     gray = cv2.medianBlur(gray, 5)
 
-    w, h, _ = output.shape
+    w, h, _ = raw_image.shape
     delta_r = w // 22
-    l_circles = []
 
     for i in range(10, 0, -1):
         min_r = delta_r * i
@@ -27,8 +26,7 @@ def find_circles(raw_image):
         if circles is not None:
             circles = numpy.uint16(numpy.around(circles))
             for t in circles[0, :]:
-                l_circles.append(tuple(t))
-    return l_circles
+                yield tuple(t)
 
 
 def image_match_template(current_img, pattern_img):
@@ -68,7 +66,7 @@ if __name__ == "__main__":
                 found_flag = True
             # print(f'{i+1}, {c}, {r_success=}')
             cv2.circle(output, center, 1, (255, 255, 0), 2)
-            cv2.circle(output, center, radius, (255, 0, 255), 3)
+            cv2.circle(output, center, radius, (255, 0, 0), 3)
             # cv2.circle(output, center, r_success, (0, 255, 0), 2)
 
         print(f'Nice shoot, you have {shoot_point} points')
