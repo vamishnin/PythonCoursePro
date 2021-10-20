@@ -34,8 +34,8 @@ class Shuffler:  # названия классов в формате ClassName
         # добавил пустую строку,
         # чтобы отделить обработку результата обхода от записи файла
         # исправлены отступы, изменён режим открытия файла для записи.
-        f = open(output, 'w')
-        f.write(str(self.map))
+        with open(output, 'w') as f:
+            f.write(str(self.map))
 
     def restore(self, dirname, restore_path):
         # отступы исправлены
@@ -60,7 +60,8 @@ class Shuffler:  # названия классов в формате ClassName
     # при первом вызове будет задано значение seed = time(),
     # которое не будет меняться при последующих вызовах функции,
     # всегда  будет возвращаться одинаковое значение, это неправильно
-    def generate_name(self, seed=None):
+    @staticmethod
+    def generate_name(seed=None):
         t_seed = time() if seed is None else seed
         # неправильный отступ
         # параметром md5  является бинарное значение, а не строка.
