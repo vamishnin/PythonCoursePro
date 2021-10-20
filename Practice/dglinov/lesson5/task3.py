@@ -12,9 +12,6 @@ from os import remove
 from tempfile import mktemp
 from time import sleep
 
-class FailedToWriteIntoFileError(Exception):
-    pass
-
 class WrapStrToFile():
    
     def __init__(self):
@@ -37,7 +34,7 @@ class WrapStrToFile():
             with open(self.__filepath, 'w') as f:
                 f.write(line)
             print('')
-        except FailedToWriteIntoFileError:
+        except IOError:
             return 'Не удается записать новое значения атрибута в файл'
 
 #При попытке удаления атрибута удаляем и файл
@@ -52,7 +49,7 @@ class WrapStrToFile():
 
 if __name__ == '__main__':
 
-    line = "При присваивании значения свойству content файл по указанному пути должен открываться  на запись и записываться содержимое"
+    line = "При присваивании значения свойству content файл по указанному пути должен открываться на запись и записываться содержимое"
     
     #print(WrapStrToFile.content)
     #<property object at 0x7fb289461cc0>

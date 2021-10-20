@@ -6,7 +6,7 @@
 Укажите ошибки, допущенные в данной функции, и предложите свою реализацию
 '''
 
-def multiplier(m = 1, source = [1, 2, 3]):     
+def multiplier(m = 1, source =(1, 2, 3)):     
     return [x * m for x in source]
 
 print(multiplier(5))
