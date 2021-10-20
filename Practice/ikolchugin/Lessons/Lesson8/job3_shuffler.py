@@ -63,11 +63,11 @@ def parse_arguments():
     restore_parser.add_argument('dirname')
     restore_parser.add_argument('restore_map')
     args = parser.parse_args()
-    return args
+    return args, parser
 
 
 def main():
-    args = parse_arguments()
+    args, parser = parse_arguments()
     shuffler = Shuffler()
 
     if args.subcommand == 'rename':
@@ -78,6 +78,7 @@ def main():
     elif args.subcommand == 'restore':
         shuffler.restore(args.dirname, args.restore_map)
     else:
+        parser.print_help()
         sys.exit()
 
 
