@@ -1,8 +1,5 @@
-import argparse
-import os
 import cv2
 import numpy
-from PIL import Image, ImageDraw
 from math import sqrt
 
 
