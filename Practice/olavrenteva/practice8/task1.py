@@ -1,7 +1,9 @@
 def generate_sorted_list(init_list):
-    temp_list = [(el, init_list.count(el)) for el in set(init_list)]
-    temp_list.sort(key=lambda x: (x[1], x[0]))
-    return [i[0] for i in temp_list]
+    temp_dict = {}
+    for el in init_list:
+        temp_dict[el] = 1 if el not in temp_dict else temp_dict[el]+1
+
+    return [key for key, value in sorted(temp_dict.items(), key=lambda x: (x[1], x[0]))]
 
 
 lst = [0, 0, 10, 1, 15, 20, 10, 10, 0, -5, 1, 20, 100, 0]

@@ -4,6 +4,11 @@ import sys
 import time
 
 
+class TTLSec:
+    FILE_TTL = 60
+    DIR_TTL = 120
+
+
 def cleaner(*args):
     dirpath = args[1]
     if os.path.exists(dirpath):
@@ -14,7 +19,7 @@ def cleaner(*args):
                     time_cr = os.stat(file_path).st_birthtime if platform.system() == 'Darwin' \
                         else os.stat(file_path).st_birthtime
                     cur_t = time.time()
-                    if (cur_t - time_cr) > 60:
+                    if (cur_t - time_cr) > TTLSec.FILE_TTL:
                         print(f'File {file_path} is too old, removing it')
                         os.remove(file_path)
 
@@ -23,7 +28,7 @@ def cleaner(*args):
                     time_cr = os.stat(subdir_path).st_birthtime if platform.system() == 'Darwin' \
                         else os.stat(subdir_path).st_birthtime
                     cur_t = time.time()
-                    if not os.listdir(subdir_path) and (cur_t - time_cr) > 120:
+                    if not os.listdir(subdir_path) and (cur_t - time_cr) > TTLSec.DIR_TTL:
                         print(f'Directory {subdir_path} is too old, removing it')
                         os.rmdir(subdir_path)
 
