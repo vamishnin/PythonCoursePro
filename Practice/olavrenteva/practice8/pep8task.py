@@ -19,7 +19,7 @@ class Shuffler:
             mp3s = [[root, file] for file in files if file[-4:] == '.mp3']
 
         for path, mp3 in mp3s:
-            hashname = self.generate_name() + '.mp3'
+            hashname = self._generate_name() + '.mp3'
             self._map[hashname] = mp3
             # os.path.join is used to make it work on any OS
             os.rename(os.path.join(path, mp3), os.path.join(path, hashname))
@@ -42,7 +42,9 @@ class Shuffler:
             os.rename(os.path.join(path, hashname), os.path.join(path, self._map[hashname]))
         os.remove(restore_path)
 
-    def generate_name(self):
+    # generate_name() is static protected method
+    @staticmethod
+    def _generate_name():
         seed = time()
         return hashlib.md5(str(seed).encode('utf-8')).hexdigest()
 
