@@ -2,7 +2,7 @@ import itertools
 
 
 def merge_lists(l1, l2, l3):
-    if not isinstance(l1, list) or not isinstance(l2, list) or not isinstance(l3, list):
+    if any((not isinstance(x, list)) for x in (l1, l2, l3)):
         print("Bad input data!")
         return
     return list(itertools.chain(l1, l2, l3))
