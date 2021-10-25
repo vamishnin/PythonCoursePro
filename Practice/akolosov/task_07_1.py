@@ -30,10 +30,10 @@ def calculate_working_days(begin, end):
     days = (end - begin).days - 1 # because begin and end are not included in calculation
     week_day = (begin + dt.timedelta(days=1)).isoweekday() # the day of week of the first calculated day
     rest_days = days % 7 # = days - days_of_full_weeks
-    rest_days_weekend = 0
-    if week_day <= 6 < week_day + rest_days: # rest_days consist Saturday
+    rest_days_weekend = 0 # How many nonworking days in rest_days
+    if week_day <= 6 < week_day + rest_days: # rest_days contain Saturday
         rest_days_weekend += 1
-    if week_day <= 7 < week_day + rest_days: # rest_days consist Sunday
+    if week_day <= 7 < week_day + rest_days: # rest_days contain Sunday
         rest_days_weekend += 1
     
     return (days // 7) * 5 + rest_days - rest_days_weekend
