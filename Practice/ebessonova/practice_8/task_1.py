@@ -1,11 +1,7 @@
 def new_list(input_list):
     count_dict = dict()
     for el in input_list:
-        if count_dict.get(el):
-            count_dict[el] += 1
-            count_dict.update([(el, count_dict[el])])
-        else:
-            count_dict.update([(el, 1)])
+        count_dict[el] = count_dict.get(el, 0) + 1
 
     sorted_dict = sorted(count_dict.items(), key=lambda num: num[1])
     output_list = list()
