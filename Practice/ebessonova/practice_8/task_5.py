@@ -4,8 +4,8 @@ import re
 
 
 class BankProps:
-    def __init__(self):
-        with open('../../../Tasks/qrcode_task/реквизиты.txt', 'r', encoding='utf-8') as f:
+    def __init__(self, filename):
+        with open(filename, 'r', encoding='utf-8') as f:
             recs = f.read()
             attr_name = re.compile(r'\'(.*=)(_.*)\|\'')
             attr_name_ru = re.compile(r'\'(.*)\': \'(_.*)\'')
@@ -41,7 +41,7 @@ class BankProps:
 
 
 if __name__ == '__main__':
-    payment = BankProps()
+    payment = BankProps('../../../Tasks/qrcode_task/реквизиты.txt')
     payment.save_props('props.txt')
 
     cur_dir = os.path.dirname(os.path.abspath(__file__))
