@@ -33,7 +33,7 @@ with open('P7_0.txt','r', encoding='utf-8') as file:
     test_file = file.read()
     for pp in Paragraph(test_file, '\n\n'): # Через цикл
         print(pp)
-    # p = Paragraph(test_file, '\n\n') # вызовами next() что приведет к исключению
+    # # p = Paragraph(test_file, '\n\n') # вызовами next() что приведет к исключению
     # print(p.par)
     # next(p)
     # print(p.par)
@@ -55,9 +55,10 @@ with open('P7_0.txt','r', encoding='utf-8') as file:
 # Разминка Лекции №7 Q2
 # Написать генератор для построчного чтения файла
 
+
 def Read1Line(source):
-    for line in source:
-        yield line
+    while source.readline() != 0:
+        yield source.readline()
 
 
 in_file = 'P7_0.txt'
@@ -65,6 +66,6 @@ with open(in_file,'r', encoding='utf-8') as file_to_read:
     print(next(Read1Line(file_to_read)))
     print(next(Read1Line(file_to_read)))
     print(next(Read1Line(file_to_read)))
-    print(next(Read1Line(file_to_read)))
-    print(next(Read1Line(file_to_read)))
-    print(next(Read1Line(file_to_read)))
+    # print(next(Read1Line(file_to_read)))
+    # print(next(Read1Line(file_to_read)))
+    # print(next(Read1Line(file_to_read)))
