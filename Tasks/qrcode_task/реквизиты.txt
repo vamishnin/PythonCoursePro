@@ -10,7 +10,7 @@ pattern = '_ID_VERSION_CODE|' \
           'FirstName=_FIRST_NAME|' \
           'MiddleName=_MIDDLE_NAME|' \
           'Prpose=_PRPOSE|' \
-          'РауеrАddress=_ADDR|' \
+          'PayerAddress=_ADDR|' \
           'Sm=_SM|'
 
 
