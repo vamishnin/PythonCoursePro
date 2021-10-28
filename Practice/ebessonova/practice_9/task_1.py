@@ -1,13 +1,14 @@
 from threading import Thread
 import multiprocessing
 import time
+import math
 
 
 def calc_simple_numbers(end, start=3):
     simple_lst = list()
     for num in range(start, end):
         simple = True
-        for div_num in range(2, num):
+        for div_num in range(2, int(math.sqrt(num)) + 1 if int(math.sqrt(num)) > 1 else num):
             if num % div_num == 0:
                 simple = False
                 break
@@ -36,11 +37,7 @@ if __name__ == '__main__':
     t2.join()
     t3.join()
     print(f'calculation functions time with threads: {time.time() - time_start}')
-    # время вычисления функции разделенной потоками совпадает со временем вычисления функций последовательно,
-    # из-за работы GIL распараллеливание вычислений посредством потоков не осуществимо
-    # если убрать функция start() поток не будет запущен и функция ен выполняется
-    # если убрать join() не дожидаемся завершения выполнения функций в вызывающем потоке и выполняем следующие операции
-    # в главном потоке, в данном случае вывод времени выполнения
+
 
     time_start = time.time()
     t1 = multiprocessing.Process(target=calc_simple_numbers, args=(10000,))
@@ -55,4 +52,4 @@ if __name__ == '__main__':
     t2.join()
     t3.join()
     print(f'calculation functions time with processes: {time.time() - time_start}')
-    # время вычисления с использованием процессов сократилось примерно в 2 раза
+
