@@ -1,14 +1,12 @@
-from multiprocessing.pool import ThreadPool
+from multiprocessing.pool import Pool
 
 
 def my_sum(*args):
     res = {}
+
     for arg in args:
         type_name = type(arg).__name__
-        try:
-            res[type_name] += arg
-        except KeyError:
-            res[type_name] = arg
+        res[type_name] = res.get(type_name, type(arg)()) + arg
     return res
 
 
@@ -21,14 +19,11 @@ def main():
 
     params = p1, p2
 
-    pool = ThreadPool(processes=4)
-    async_result = []
+    pool = Pool(processes=4)
+    results = [pool.map(my_sum, (p,)) for p in params]
 
-    for p in params:
-        async_result.append(pool.apply_async(my_sum, p))
-
-    for res in async_result:
-        print(res.get())
+    for res in results:
+        print(res)
 
 
 if __name__ == '__main__':
