@@ -19,8 +19,8 @@ def main():
 
     params = p1, p2
 
-    pool = Pool(processes=4)
-    results = [pool.map(my_sum, (p,)) for p in params]
+    with Pool(processes=4) as p:
+        results = p.starmap(my_sum, params)
 
     for res in results:
         print(res)
