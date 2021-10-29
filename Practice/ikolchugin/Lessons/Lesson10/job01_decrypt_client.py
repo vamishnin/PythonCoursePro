@@ -2,7 +2,6 @@ import socket
 import random
 import time
 import pickle
-import job01_crypto
 
 class TcpClient:
     def __init__(self, host, port, encrypted):
