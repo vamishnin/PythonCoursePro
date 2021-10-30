@@ -7,7 +7,7 @@ class User:
         self.__name = name
         self.__age = age
 
-    def __repr__(self):
+    def __str__(self):
         return f'User: name={self.__name}, age={self.__age}'
 
 

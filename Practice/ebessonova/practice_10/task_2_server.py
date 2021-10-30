@@ -5,17 +5,15 @@ import socket
 class ClientThread(threading.Thread):
     def __init__(self, conn, addr):
         super().__init__()
-        self._mutex = threading.RLock()
         self._connection = conn
         self._address = addr
 
     def run(self):
-        with self._mutex:
-            print(f'Connection from address {self._address}')
-            data = self._connection.recv(1024)
-            print(f'Received {data.decode()}')
-            self._connection.close()
-            print(f'Closed connection from {self._address}\n')
+        print(f'Connection from address {self._address}')
+        data = self._connection.recv(1024)
+        print(f'Received {data.decode()}')
+        self._connection.close()
+        print(f'Closed connection from {self._address}\n')
 
 
 class TcpServer:

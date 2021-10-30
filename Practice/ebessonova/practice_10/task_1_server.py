@@ -9,6 +9,9 @@ port = 12345
 s.bind((host, port))
 while True:
     elem, addr = s.recvfrom(1024)
-    print('Server got data from client: {}'.format(elem.decode()))
-    s.sendto((word_dict[elem.decode()].encode() if word_dict[elem.decode()] else 'not in dict'.encode()), addr)
+    print(f'Server got data from client: {elem.decode()}')
+    try:
+        s.sendto(word_dict[elem.decode()].encode(), addr)
+    except KeyError:
+        s.sendto(f'Слово "{elem.decode()}" не найдено в словаре'.encode(), addr)
 s.close()
