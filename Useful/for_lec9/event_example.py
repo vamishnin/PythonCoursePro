@@ -14,8 +14,7 @@ def print_len(my_ev):
 
 
 if __name__ == '__main__':
-    ev = Event()
-    ev.clear()
+    ev = Event()  # is_set() == False, by default (т.е. ресурс занят)
     t = Thread(target=print_len, args=(ev,))
     t.start()
     while 'stop' not in lst:
