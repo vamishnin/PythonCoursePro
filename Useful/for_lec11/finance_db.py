@@ -47,11 +47,8 @@ password = input('Input password: ')
 cursor = conn.execute("SELECT login, salary from USERS WHERE login=? AND password=?",
                       (login, password))
 print('Output data 2:')
-if cursor.rowcount == -1:
-   print('incorrect login/password')
-else:
-    for row in cursor:
-       print(row)
+for row in cursor:
+   print(row)
 
 conn.execute('DROP TABLE USERS')
 print('Таблица удалена')
