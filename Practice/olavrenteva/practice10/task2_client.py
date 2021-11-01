@@ -16,7 +16,7 @@ if __name__ == '__main__':
     # user = User('Petr', 'Petrov')
     user = User('Sidr', 'Sidorov')
 
-    with (socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         host = '127.0.0.1'
         port = 53123
         s.connect((host, port))

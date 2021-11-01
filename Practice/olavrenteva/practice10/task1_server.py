@@ -7,7 +7,7 @@ dict = {"а": "ю", "б": "я", "в": "а", "г": "б", "д": "в", "е": "г", 
         "с": "п", "т": "р", "у": "с", "ф": "т", "х": "у", "ц": "ф", "ч": "х", "ш": "ц", "щ": "ч",
         "ъ": "ш", "ы": "щ", "ь": "ъ", "э": "ы", "ю": "ь", "я": "э"}
 
-with (socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     host = '127.0.0.1'
     port = 53123
     s.bind((host, port))
