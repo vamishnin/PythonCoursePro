@@ -1,6 +1,8 @@
 import threading
 import socket
 import pickle
+from job01_crypto import decrypt
+
 
 class ClientThread(threading.Thread):
     def __init__(self, conn, addr, crypto_dict):
@@ -15,7 +17,7 @@ class ClientThread(threading.Thread):
         print(f'Connection from address {self._address}')
         self._encrypted = pickle.loads(self._connection.recv(1024))
         print(f'Received encrypted {self._encrypted}')
-        self._decrypted = [self._crypto_dict.get(w, None) for w in self._encrypted]
+        self._decrypted = [decrypt(w, self._crypto_dict) for w in self._encrypted]
         self._connection.send(pickle.dumps(self._decrypted))
         print(f'Sent decrypted {self._decrypted}')
         self._connection.close()
@@ -28,11 +30,8 @@ class TcpServer:
         self.port = port
         self._socket = None
         self._running = False
-        self._crypto_dict = self.__generate_crypto()
-
-    @staticmethod
-    def __generate_crypto():
-        return {f'word{i}': f'WORD{i}' for i in range(20)}
+        with open('decrypt_dict.bin', 'rb') as f:
+            self._crypto_dict = pickle.load(f)
 
     def run(self):
         self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

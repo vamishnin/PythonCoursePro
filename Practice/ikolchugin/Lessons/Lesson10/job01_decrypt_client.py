@@ -2,6 +2,7 @@ import socket
 import random
 import time
 import pickle
+from job01_crypto import encrypt
 
 class TcpClient:
     def __init__(self, host, port, encrypted):
@@ -23,9 +24,14 @@ class TcpClient:
 
 
 if __name__ == '__main__':
+    with open('crypt_dict.bin', 'rb') as f:
+        secret_dict = pickle.load(f)
+
+    # print(secret_dict)
     encrypted_words = [
-        f'word{i}' for i in range(30)
+        encrypt(f'word{i}', secret_dict) for i in range(30)
     ]
     name = 'Python client ' + str(random.randint(1, 1000))
+    # print(encrypted_words)
     myclient = TcpClient(host='127.0.0.1', port=9292, encrypted=encrypted_words)
     myclient.run()
