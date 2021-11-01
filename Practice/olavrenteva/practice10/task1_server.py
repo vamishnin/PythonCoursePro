@@ -15,7 +15,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     while True:
         conn, addr = s.accept()
         with conn:
-            got_list = (pickle.loads(conn.recv(4096)))
+            got_list = pickle.loads(conn.recv(4096))
 
             list_to_send = []
             for word in got_list:

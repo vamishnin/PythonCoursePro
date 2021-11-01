@@ -10,6 +10,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     list_to_send = ["Мхёв", "мвфкфуб", "окт"]
     s.send(pickle.dumps(list_to_send))
 
-    got_list = (pickle.loads(s.recv(4096)))
+    got_list = pickle.loads(s.recv(4096))
     print(got_list)
 
