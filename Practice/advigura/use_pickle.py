@@ -2,10 +2,10 @@ import pickle, random, itertools
 
 
 class Human: 
-    def __init__(self, n, ln, a, addr, hobby_): 
-        self.name = n
-        self.last_name = ln
-        self.age = a
+    def __init__(self, name, lastname, age, addr, hobby_): 
+        self.name = name
+        self.last_name = lastname
+        self.age = age
         self.address = addr
         self.hobby = hobby_
         
