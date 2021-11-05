@@ -4,14 +4,8 @@ import json
 
 
 class SQLiteWrapper:
-    def __init__(self):
-        self.__conn = sqlite3.connect('new_base.db')
-        self.__conn.execute('CREATE TABLE COMPANY'
-                            '    (ID       INT   PRIMARY KEY  NOT NULL,'
-                            '     NAME     TEXT               NOT NULL,'
-                            '     AGE      INT                NOT NULL,'
-                            '     ADDRESS  CHAR(50),'
-                            '     SALARY   REAL);')
+    def __init__(self, conn):
+        self.__conn = conn
 
     def __enter__(self):
         return self
@@ -70,7 +64,14 @@ class SQLiteWrapper:
 
 
 if __name__ == "__main__":
-    obj = SQLiteWrapper()
+    conn = sqlite3.connect('new_base.db')
+    conn.execute('CREATE TABLE COMPANY'
+                        '    (ID       INT   PRIMARY KEY  NOT NULL,'
+                        '     NAME     TEXT               NOT NULL,'
+                        '     AGE      INT                NOT NULL,'
+                        '     ADDRESS  CHAR(50),'
+                        '     SALARY   REAL);')
+    obj = SQLiteWrapper(conn)
     obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
                 "VALUES (1, 'Paul', 32, 'California', 20000.00)")
     obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
