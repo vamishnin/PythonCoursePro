@@ -40,21 +40,21 @@ if __name__ == "__main__":
     db_name = 'new_base.db'
     db_exists = os.path.exists(db_name)
     conn = sqlite3.connect(db_name)
-    obj = SQLiteWrapper(conn)
+    with SQLiteWrapper(conn) as obj:
 
-    if not db_exists:
-        configure_db(conn)
-        obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
-                    "VALUES (1, 'Paul', 32, 'California', 20000.00)")
-        obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
-                    "VALUES (2, 'Allen', 25, 'Texas', 15000.00)")
-        obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
-                    "VALUES (3, 'Teddy', 23, 'Norway', 20000.00)")
-        obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
-                    "VALUES (4, 'Mark', 25, 'Richmond', 65000.00)")
+        if not db_exists:
+            configure_db(conn)
+            obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
+                        "VALUES (1, 'Paul', 32, 'California', 20000.00)")
+            obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
+                        "VALUES (2, 'Allen', 25, 'Texas', 15000.00)")
+            obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
+                        "VALUES (3, 'Teddy', 23, 'Norway', 20000.00)")
+            obj.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
+                        "VALUES (4, 'Mark', 25, 'Richmond', 65000.00)")
 
-    obj.select('SELECT id, name, address, salary from '
-               'COMPANY WHERE id = 1 OR id = 2 OR id = 4')
+        obj.select('SELECT id, name, address, salary from '
+                   'COMPANY WHERE id = 1 OR id = 2 OR id = 4')
 
 
 
