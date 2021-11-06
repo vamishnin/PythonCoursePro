@@ -10,9 +10,9 @@ class Accout():
 # тип операции - снятие или зачисление, баланс b время операции
 
     def __init__(self, name, balance):
-        self._name = name
+        self.__name = name
         self.__balance = balance
-        self._history = []
+        self.__history = []
 
     @staticmethod
     def __curent_time():
@@ -24,7 +24,7 @@ class Accout():
         print(f'You put {amount} units')
         self.__balance += amount
         self.show_balance()
-        self._history.append([amount, self.__curent_time()])
+        self.__history.append([amount, self.__curent_time()])
 
 # метод, позволяет снять деньги с счета
     def credit(self, amount):
@@ -33,7 +33,7 @@ class Accout():
             print(f'You spent {amount} units')
             self.__balance -= amount
             self.show_balance()
-            self._history.append([-amount, self.__curent_time()])
+            self.__history.append([-amount, self.__curent_time()])
         else:
             print('The requested amount is more than your balance ')
             self.show_balance()
@@ -43,7 +43,7 @@ class Accout():
 
 # история состоит из списка из двух элементов. в методе show_history мы распаковываем эти элементы
     def show_history(self):
-        for amount, date in self._history:
+        for amount, date in self.__history:
             if amount > 0:
                 transaction = 'deposited'
                 print(f'{amount} {transaction} on {self.__curent_time()} ')
