@@ -15,9 +15,8 @@ class Accout():
         self._history = []
 
     @staticmethod
-    def curent_time():
-        dt = datetime.datetime.now()
-        return dt
+    def __curent_time():
+        return datetime.datetime.now()
         #pytz.utc.localize(datetime.utcnow())
 
 # метод, позволяет пополнить баланс
@@ -25,7 +24,7 @@ class Accout():
         print(f'You put {amount} units')
         self.__balance += amount
         self.show_balance()
-        self._history.append([amount, self.curent_time()])
+        self._history.append([amount, self.__curent_time()])
 
 # метод, позволяет снять деньги с счета
     def credit(self, amount):
@@ -34,7 +33,7 @@ class Accout():
             print(f'You spent {amount} units')
             self.__balance -= amount
             self.show_balance()
-            self._history.append([-amount, self.curent_time()])
+            self._history.append([-amount, self.__curent_time()])
         else:
             print('The requested amount is more than your balance ')
             self.show_balance()
@@ -47,10 +46,10 @@ class Accout():
         for amount, date in self._history:
             if amount > 0:
                 transaction = 'deposited'
-                print(f'{amount} {transaction} on {self.curent_time()} ')
+                print(f'{amount} {transaction} on {self.__curent_time()} ')
             else:
                 transaction = 'credited'
-                print(f'{amount} {transaction} on {self.curent_time()} ')
+                print(f'{amount} {transaction} on {self.__curent_time()} ')
 
 a = Accout('Igor', 0)
 
