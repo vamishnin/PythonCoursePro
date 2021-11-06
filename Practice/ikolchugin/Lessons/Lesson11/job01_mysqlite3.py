@@ -27,11 +27,10 @@ class SQLite3:
             print(f'Database connection error {e}')
 
     def execute(self, sql, *args, **kwargs):
-        try:
-            self._cursor.execute(sql, *args, **kwargs)
-        except Exception as e:
-            print(e)
-
+        # try:
+        self._cursor.execute(sql, *args, **kwargs)
+        # except Exception as e:
+        #     print(e)
 
     def select(self, table, fields, limit=None, offset=None):
         """
@@ -77,7 +76,7 @@ class SQLite3:
 
 def main():
     table_name = 'my_table'
-    create_stmt = "CREATE TABLE {}(" \
+    create_stmt = "CREATE TABLE if not exists {}(" \
                   "id  integer primary key autoincrement," \
                   "name char(128)," \
                   "surname char(128)" \
@@ -101,6 +100,20 @@ def main():
         #
         print(myconn.select_json(table_name, '*',  limit=10,  offset=2))
 
+    # with SQLite3('test.db') as myconn:
+    with SQLite3() as myconn:
+        myconn.execute(create_stmt)
+        print('0')
+        for i in range(20,25):
+            myconn.execute('INSERT INTO {0}(name, surname) VALUES(:name, :surname)'.format(table_name),
+                           {'name': f'word{i}', 'surname': f'word{i + 10}'})
+        print('1')
+        for i in range(20,25):
+            myconn.execute('INSERT INTO {0}(name, surname) VALUES(:name, :surname)'.format(table_name),
+                           {'name': f'word{i}', 'surname': f'word{i + 10}'})
+        print('2')
+
+        myconn.execute("delete from my table where name1='234'")
 
 if __name__ == '__main__':
     main()
