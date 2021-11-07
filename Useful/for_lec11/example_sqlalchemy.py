@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import and_
 from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
+from sqlalchemy.orm.session import close_all_sessions
 
 Base = declarative_base()
 
@@ -62,7 +63,7 @@ class DBClient:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        self._session.close_all()
+        close_all_sessions()
 
     @staticmethod
     def _get_engine(dbtype, dbname, username=None, password=None):
