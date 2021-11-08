@@ -5,6 +5,7 @@ class SQLite3:
     def __init__(self, database=':memory:'):
         self._conn = None
         self._cursor = None
+        self.__data_changed = False
         self.open(database)
 
     def __enter__(self):
@@ -12,10 +13,11 @@ class SQLite3:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self._cursor.close()
-        if isinstance(exc_val, Exception):
-            self._conn.rollback()
-        else:
-            self._conn.commit()
+        if self.__data_changed:
+            if isinstance(exc_val, Exception):
+                self._conn.rollback()
+            else:
+                self._conn.commit()
         self._conn.close()
 
     def open(self, database):
@@ -27,10 +29,9 @@ class SQLite3:
             print(f'Database connection error {e}')
 
     def execute(self, sql, *args, **kwargs):
-        # try:
+        if not self.__data_changed and sql.split(' ')[0].upper() in ('INSERT', 'UPDATE', 'DELETE'):
+            self.__data_changed = True
         self._cursor.execute(sql, *args, **kwargs)
-        # except Exception as e:
-        #     print(e)
 
     def select(self, table, fields, limit=None, offset=None):
         """
