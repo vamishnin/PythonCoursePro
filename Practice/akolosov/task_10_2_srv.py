@@ -14,4 +14,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(f'Connected by {addr}')
             user = pickle.loads(conn.recv(1024))
             print(f'User: {user.name} age: {user.age}')
-            
