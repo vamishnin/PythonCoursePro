@@ -57,7 +57,7 @@ with open('P7_0.txt','r', encoding='utf-8') as file:
 
 
 def Read1Line(source):
-    while source.readline() != 0:
+    while source.readline():
         yield source.readline()
 
 
