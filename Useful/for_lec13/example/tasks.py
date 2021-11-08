@@ -1,6 +1,6 @@
 def mylen(list_arg):
     res = 0
-    for i in list_arg:
+    for _ in list_arg:
         res += 1
     return res
 

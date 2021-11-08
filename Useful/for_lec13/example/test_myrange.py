@@ -8,7 +8,6 @@ class TestMyrangeSuite:
         params=[(0, 5), (10, 20), (10, 20, 3), (20, 10, -2)],
         ids=lambda args: f"Test with args: {args}"
     )
-
     def parametrize_myrange(self, request):
         return request.param
 
