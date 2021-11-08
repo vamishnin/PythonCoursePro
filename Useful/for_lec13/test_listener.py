@@ -1,4 +1,4 @@
-import mock
+import unittest.mock as mock
 
 # Тестируемый класс
 class Listener:

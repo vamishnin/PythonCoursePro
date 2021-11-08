@@ -1,6 +1,6 @@
 import cmd_manager
-import mock
 import unittest
+import unittest.mock as mock
 
 
 class TestCmdManager(unittest.TestCase):
