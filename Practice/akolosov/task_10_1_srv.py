@@ -16,7 +16,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 if not data:
                     break
                 data = data.decode()
-                if data in dic.keys():
-                    conn.send(dic[data].encode())
-                else:
-                    conn.send('There is no word'.encode())
+                conn.send(dic.get(data, 'There is no word').encode())

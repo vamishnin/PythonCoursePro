@@ -20,10 +20,7 @@ class SuperSQLite:
         else:
             self.__conn.row_factory = None
         cur = self.__conn.cursor()
-        if len(args) == 0:
-            cur.execute('SELECT ' + rest_query)
-        else:
-            cur.execute('SELECT ' + rest_query, args[0])
+        cur.execute('SELECT ' + rest_query, *args)
         res = cur.fetchall()
         cur.close()
         if output == 'json':
@@ -33,10 +30,7 @@ class SuperSQLite:
 
     def execute(self, query: str, *args: dict):
         cur = self.__conn.cursor()
-        if len(args) == 0:
-            cur.execute(query)
-        else:
-            cur.execute(query, args[0])
+        cur.execute(query, *args)
         self.__conn.commit()
         cur.close()
 
