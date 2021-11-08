@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.7.5 on win32)" generated="20210906 19:19:39.943" rpa="false">
+<suite id="s1" name="Test Copy File" source="C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\test_copy_file.robot">
+<test id="s1-t1" name="Test File Copy">
+<kw name="On Test Setup" type="setup">
+<msg timestamp="20210906 19:19:39.984" level="TRACE">Arguments: [  ]</msg>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
+<arguments>
+<arg>${src_file}</arg>
+<arg>${exp_content}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:39.984" level="TRACE">Arguments: [ './source.txt' | 'hello' ]</msg>
+<msg timestamp="20210906 19:19:39.985" level="INFO" html="yes">Created file '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\source.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\source.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210906 19:19:39.985" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:39.984" endtime="20210906 19:19:39.985"></status>
+</kw>
+<kw name="File Should Exist" library="OperatingSystem">
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<arguments>
+<arg>${src_file}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:39.986" level="TRACE">Arguments: [ './source.txt' ]</msg>
+<msg timestamp="20210906 19:19:39.986" level="INFO" html="yes">File '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\source.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\source.txt&lt;/a&gt;' exists.</msg>
+<msg timestamp="20210906 19:19:39.986" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:39.986" endtime="20210906 19:19:39.986"></status>
+</kw>
+<msg timestamp="20210906 19:19:39.986" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:39.984" endtime="20210906 19:19:39.986"></status>
+</kw>
+<kw name="File Should Not Exist" library="OperatingSystem">
+<doc>Fails if the given path points to an existing file.</doc>
+<arguments>
+<arg>${dst_file}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:39.987" level="TRACE">Arguments: [ './destination.txt' ]</msg>
+<msg timestamp="20210906 19:19:39.987" level="INFO" html="yes">File '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt&lt;/a&gt;' does not exist.</msg>
+<msg timestamp="20210906 19:19:39.987" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:39.987" endtime="20210906 19:19:39.987"></status>
+</kw>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>${copy_script}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:39.988" level="TRACE">Arguments: [ 'python ./copy_file_task.py' ]</msg>
+<msg timestamp="20210906 19:19:40.014" level="INFO">Running command 'python ./copy_file_task.py 2&gt;&amp;1'.</msg>
+<msg timestamp="20210906 19:19:40.103" level="TRACE">Return: ''</msg>
+<status status="PASS" starttime="20210906 19:19:39.988" endtime="20210906 19:19:40.103"></status>
+</kw>
+<kw name="File Should Exist" library="OperatingSystem">
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<arguments>
+<arg>${dst_file}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:40.104" level="TRACE">Arguments: [ './destination.txt' ]</msg>
+<msg timestamp="20210906 19:19:40.104" level="INFO" html="yes">File '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt&lt;/a&gt;' exists.</msg>
+<msg timestamp="20210906 19:19:40.104" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:40.104" endtime="20210906 19:19:40.105"></status>
+</kw>
+<kw name="Get File" library="OperatingSystem">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${dst_file}</arg>
+</arguments>
+<assign>
+<var>${content}</var>
+</assign>
+<msg timestamp="20210906 19:19:40.105" level="TRACE">Arguments: [ './destination.txt' ]</msg>
+<msg timestamp="20210906 19:19:40.105" level="INFO" html="yes">Getting file '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210906 19:19:40.106" level="TRACE">Return: ''</msg>
+<msg timestamp="20210906 19:19:40.106" level="INFO">${content} = </msg>
+<status status="PASS" starttime="20210906 19:19:40.105" endtime="20210906 19:19:40.106"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>'${content}' == '${exp_content}'</arg>
+</arguments>
+<msg timestamp="20210906 19:19:40.108" level="TRACE">Arguments: [ "'' == 'hello'" ]</msg>
+<msg timestamp="20210906 19:19:40.109" level="FAIL">''' == 'hello'' should be true.</msg>
+<msg timestamp="20210906 19:19:40.109" level="DEBUG">Traceback (most recent call last):
+  None</msg>
+<status status="FAIL" starttime="20210906 19:19:40.108" endtime="20210906 19:19:40.109"></status>
+</kw>
+<kw name="On Test Teardown" type="teardown">
+<msg timestamp="20210906 19:19:40.110" level="TRACE">Arguments: [  ]</msg>
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${src_file}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:40.111" level="TRACE">Arguments: [ './source.txt' ]</msg>
+<msg timestamp="20210906 19:19:40.112" level="INFO" html="yes">Removed file '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\source.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\source.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210906 19:19:40.112" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:40.110" endtime="20210906 19:19:40.112"></status>
+</kw>
+<kw name="Remove File" library="OperatingSystem">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${dst_file}</arg>
+</arguments>
+<msg timestamp="20210906 19:19:40.113" level="TRACE">Arguments: [ './destination.txt' ]</msg>
+<msg timestamp="20210906 19:19:40.114" level="INFO" html="yes">Removed file '&lt;a href="file://C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt"&gt;C:\Users\ilya.orlov\Documents\PythonCourseForSTM\PythonCourseSTM\Useful\lec13\destination.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20210906 19:19:40.114" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:40.112" endtime="20210906 19:19:40.114"></status>
+</kw>
+<msg timestamp="20210906 19:19:40.114" level="TRACE">Return: None</msg>
+<status status="PASS" starttime="20210906 19:19:40.110" endtime="20210906 19:19:40.114"></status>
+</kw>
+<doc>Test file copy script</doc>
+<tags>
+<tag>DEBUG</tag>
+</tags>
+<status status="FAIL" starttime="20210906 19:19:39.983" endtime="20210906 19:19:40.115" critical="yes">''' == 'hello'' should be true.</status>
+</test>
+<doc>Check file actions</doc>
+<status status="FAIL" starttime="20210906 19:19:39.945" endtime="20210906 19:19:40.117"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">DEBUG</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Test Copy File">Test Copy File</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
