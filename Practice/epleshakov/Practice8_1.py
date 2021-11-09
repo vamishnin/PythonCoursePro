@@ -5,12 +5,13 @@ l2 = ['odin', 'dva', 'tri', 'tri', 'dva', 'dva', 'chetyre', 'chetyre', 'dva', 'd
 
 
 def unique_list_sort(values_list):
-    unique = sorted(values_list, key=lambda x: values_list.count(x), reverse=True)
-    unique_list = []
-    for values in unique:
-        if values not in unique_list:
-            unique_list.append(values)
-    return unique_list
+    unique = sorted(set(values_list), key=lambda x: values_list.count(x), reverse=True)
+    # оставлю вариант и с циклическим добавлением на память )
+    # unique_list = []
+    # for values in unique:
+    #     if values not in unique_list:
+    #         unique_list.append(values)
+    return unique  # return unique_list
 
 
 print(unique_list_sort(l1))
