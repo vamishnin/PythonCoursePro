@@ -28,10 +28,20 @@ conn.commit()
 print('Данные добавлены')
 
 # Читаем данные
-cursor = conn.execute('SELECT id, name, address, salary from '
-                      'COMPANY WHERE id = 1')
+cursor = conn.cursor()
+print("############Test row_factory 1############")
+cursor.row_factory = sqlite3.Row
+cursor.execute('SELECT id, name, address, salary from COMPANY WHERE id = 1')
+for row in cursor:
+    print(dict(row))
+print("##############End of test 1###############")
+
+print("############Test row_factory 2############")
+cursor.row_factory = None
+cursor.execute('SELECT id, name, address, salary from COMPANY WHERE id = 1')
 for row in cursor:
     print(row)
+print("##############End of test 2###############")
 
 # Изменяем данные
 conn.execute('UPDATE COMPANY set salary = 25000.00 WHERE id = 1')
@@ -55,6 +65,7 @@ for row in cursor:
 conn.execute('UPDATE COMPANY set salary = 25000.00 WHERE id = 1')
 conn.commit()
 print('Данные снова изменены')
+
 # Проверяем, что получилось
 cursor = conn.execute('SELECT id, name, address, salary from '
                       'COMPANY WHERE id = 1')
@@ -71,6 +82,7 @@ conn.execute("INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)"
              (5, 'Allen', 32, 'Texas', 15000.00))
 conn.commit()
 print('Новые данные добавлены')
+
 # Проверяем, что получилось
 cursor = conn.execute('SELECT id, name, address, salary from COMPANY')
 for row in cursor:
@@ -80,8 +92,3 @@ conn.execute('DROP TABLE COMPANY')
 print('Таблица удалена')
 
 conn.close()
-
-
-
-
-
