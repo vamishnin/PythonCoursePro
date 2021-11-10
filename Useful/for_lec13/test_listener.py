@@ -23,10 +23,11 @@ client = mock.Mock()
 # При инициализации атрибута side_effect итерируемым объектом
 # при каждом обращении к wait_message будет возвращаться очередной
 # элемент итерируемого объекта.
-msg_broker.wait_message.side_effect = ['message', Exception]
+MSG = 'message'
+msg_broker.wait_message.side_effect = [MSG, Exception]
 
 def check_msg(msg):
-    assert msg == 'message'
+    assert msg == MSG
 # При инициализации атрибута side_effect функциональным (callable)
 # объектом при каждом обращении к process_message будет вызываться
 # этот функциональный объект.
