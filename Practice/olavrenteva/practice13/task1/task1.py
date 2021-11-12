@@ -2,11 +2,7 @@ class NonValidInput(Exception):
     pass
 
 
-def to_roman(number):
-    if not isinstance(number, int) or number < 1 or number > 5000:
-        raise NonValidInput('to_roman function accepts only integers between 1 and 5000')
-
-    convert_dict = {
+CONVERT_DICT = {
         1000: 'M',
         900: 'CM',
         500: 'D',
@@ -22,8 +18,13 @@ def to_roman(number):
         1: 'I'
     }
 
+
+def to_roman(number):
+    if not isinstance(number, int) or number < 1 or number > 5000:
+        raise NonValidInput('to_roman function accepts only integers between 1 and 5000')
+
     roman_num = ''
-    for dec, rom in convert_dict.items():
+    for dec, rom in CONVERT_DICT.items():
         roman_num += rom * int(number//dec)
         number = number - dec * (number//dec)
 
