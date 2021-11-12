@@ -1,15 +1,11 @@
 d = True
-l = ('stop', "Stop", 'STOP')
-b = 0
-while d is True:
+b = ''
+while d:
     a = input('Введите число: ')
-    try:
-        c = int(a)
-        b += c
-    except:
-        if a in l:
-            n = int(b)
-            print(f'{n}')
-            d = False
-        else:
-            print('ALARM! введите числовой символ')
+    if a.lower() == 'stop':
+        print(b)
+        d = False
+    elif a.isdecimal():
+        b = b + a
+    else:
+        print('ALARM! введите числовой символ')

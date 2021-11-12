@@ -1,13 +1,12 @@
 def numprint(num):
-    numlist = list(num)
+    numlist = num
     j = 0
     print(f'Число: {num}')
-    while j <= len(numlist) - 1:
-        try:
-            k = int(numlist[j])
-            print(f'{(j + 1)} цифра равна {numlist[j]}')
-        except ValueError:
-            print('Апчхи!')
+    while j < len(numlist):
+        if numlist[j].isdecimal():
+            print(f'{j + 1} цифра равна {numlist[j]}')
+        else:
+            print('Апчхи"')
         j += 1
 
 

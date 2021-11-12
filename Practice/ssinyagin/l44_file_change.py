@@ -1,6 +1,9 @@
-def change_line(my_file):
+def change_line(my_file, trig):
     with open(my_file) as f:
-        dic = {"    ": "\t", "\t": "    "}
+        if trig is "tab":
+            dic = {"    ": "\t"}
+        elif trig is "space":
+            dic = {"\t": "    "}
         for line in f:
             for i, j in dic.items():
                 print(f'before: {repr(line)}')
@@ -9,7 +12,8 @@ def change_line(my_file):
 
 
 fil = 'myfile.txt'
-fileop = change_line(fil)
+trig = "space"
+fileop = change_line(fil, trig)
 
 
 #  print(f'{str(t)}') - выведет табуляцию (как пользователю)

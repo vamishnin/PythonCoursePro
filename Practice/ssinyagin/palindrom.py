@@ -5,13 +5,14 @@ def palind(palin):
     i = 0
     if d >= 2:
         for r in palin:
-            if palin[i] == palin[d-1-i]:
-                j += 1
+            if palin[i] != palin[d-1-i]:
+                print(f'слово {palin} не палиндром!')
+                break
+            elif j > d / 2:
+                print(f'слово {palin} палиндром')
+                break
             else:
-                j = 0
-            i += 1
-        if j == d:
-            print(f'слово {palin} палиндром')
+                j += 1
     else:
         print(f'слово {palin} не палиндром!')
 

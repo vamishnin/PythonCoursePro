@@ -10,21 +10,19 @@ class ClearDic:
         print('Значение для удаления: ', self.key)
         k = 0
         n = len(self.mist)
-        while k < n:
-            for i in self.mist:
-                m = 0
-                n = len(i)
-                for j in i:
-                    if j == self.key:
-                        for item in self.mist:
-                            del item[m]
-                    else:
-                        k = len(i)
-                    m += 1
+        for i in self.mist:
+            m = 0
+            n = len(i)
+            for j in range(n):
+                if j == self.key:
+                    for item in self.mist:
+                        del item[m]
+                m += 1
+
         print('Матрица без значения: ', self.mist)
 
 
-matrix = [[1, 3, 4, 1], [3, 2, 4, 1], [7, 1, 2, 5]]
+matrix = [[2, 1, 1, 1], [2, 2, 2, 2], [2, 2, 2, 2]]
 hit = ClearDic(matrix, 1)
 b = hit.clear_dic()
 
