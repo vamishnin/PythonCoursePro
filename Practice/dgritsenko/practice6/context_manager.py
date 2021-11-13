@@ -16,8 +16,8 @@ class TimeManager:
         self._toc = time.perf_counter()
         print(f"Код выполнялся {self._toc - self._tic:0.4f} секунд")
 
-
-with TimeManager():
-    print("Tic")
-    time.sleep(PAUSE_DURATION_SEC)
-    print("Toc")
+if __name__ == '__main__':
+    with TimeManager():
+        print("Tic")
+        time.sleep(PAUSE_DURATION_SEC)
+        print("Toc")
