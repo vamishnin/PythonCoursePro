@@ -6,6 +6,6 @@ while d:
         print(b)
         d = False
     elif a.isdecimal():
-        b = b + a
+        b += a
     else:
         print('ALARM! введите числовой символ')

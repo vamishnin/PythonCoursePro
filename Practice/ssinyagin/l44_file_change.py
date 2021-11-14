@@ -1,4 +1,5 @@
 def change_line(my_file, trig):
+    # добавил условие изменения и тригер
     with open(my_file) as f:
         if trig is "tab":
             dic = {"    ": "\t"}
