@@ -5,6 +5,7 @@ Library             SeleniumLibrary
 
 *** Test Cases ***
 Test Google Search
+    # Open Browser	http://www.google.com	chrome  options=add_experimental_option("excludeSwitches", ["enable-logging"])
     Open Browser	http://www.google.com	chrome
     Input Text	name=q	Cheese!
     Submit Form

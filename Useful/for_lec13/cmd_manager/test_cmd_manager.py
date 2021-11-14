@@ -19,19 +19,21 @@ class TestCmdManager(unittest.TestCase):
             # что-то возвращать. Подставим вместо service mock-объект.
             service = mock.Mock()
             service.name = 'MyService'
-            service.run.return_value = 0
+            RESULT = 0
+            service.run.return_value = RESULT
 
             cmd_mgr.set_service(service)
             self.assertTrue(service.start.called)
 
-            cmd_mgr.run_command('status')
+            CMD = 'status'
+            cmd_mgr.run_command(CMD)
             # Используем assert-методы mock-объекта, которым мы подменили
             # audit_service
             audit_service_mock.add_call.assert_called_once_with(
-                'MyService', 'run', 'status')
-            service.run.assert_called_once_with('status')
+                'MyService', 'run', CMD)
+            service.run.assert_called_once_with(CMD)
             audit_service_mock.add_result.assert_called_once_with(
-                'MyService', 'run', 0)
+                'MyService', 'run', RESULT)
 
 
 if __name__ == '__main__':
