@@ -1,15 +1,17 @@
 import time
 import threading
 import multiprocessing
+import math
 
 
 def find_primes(end, start=3):
     primes = []
     for num in range(start-1, end+1):
         prime = True
-        for i in range(start-1, num):
+        for i in range(2, math.isqrt(num)+1):
             if num % i == 0:
                 prime = False
+                break
         if prime and num != 2:
             primes.append(num)
     return primes
@@ -49,3 +51,12 @@ if __name__ == '__main__':
     p2.join()
     p3.join()
     print(f'function time using processes: {time.perf_counter() - start: .2f} sec.')
+
+    #Если не выполнить start для потоков, будет exception 'RuntimeError'.
+    #Если не выполнить join для потоков,то главный поток завершится, не дождавшись
+    #завершения дочерних потоков.
+    # Если не выполнить start для процессов, будет exception 'AssertionError'.
+    # Если не выполнить join для процессов,то главный поток завершится, не дождавшись
+    # завершения дочерних потоков.
+    #Быстрее всего выполняется вызов функции, медленнее всего происходит многопроцессное
+    #выполнение функции.

@@ -20,12 +20,8 @@ class TcpClient:
 
 
 if __name__ == '__main__':
-    a = user.User('Petr', '25')
-    b = user.User('Fedor', '40')
-    c = user.User('Ivan', '18')
-    myClient1 = TcpClient(host='127.0.0.1', port=12345, users=a)
-    myClient2 = TcpClient(host='127.0.0.1', port=12345, users=b)
-    myClient3 = TcpClient(host='127.0.0.1', port=12345, users=c)
-    myClient1.run()
-    myClient2.run()
-    myClient3.run()
+    my_clients = []
+    for each in (('Petr', '25'), ('Fedor', '40'), ('Ivan', '18')):
+        my_clients.append(TcpClient(host='127.0.0.1', port=12346, users=user.User(*each)))
+    for my_client in my_clients:
+        my_client.run()
