@@ -19,8 +19,6 @@ class TaxiPrice(enum.Enum):
     LUX = 5
 
 
-# conn = me.connect('test', username='test', password='onlytest')
-# print(conn)
 
 class Client(me.Document):
     """
@@ -47,7 +45,7 @@ class Client(me.Document):
     def find_any_taxi(self):
         taxis = TaxiCar.objects.filter(status=StatusTaxi.AVAILABLE,
             geo__geo_within_center=[self.geo_from['coordinates'], RADIUS])
-        # find the nearest taxi car
+        # should be finding the nearest taxi car
         nearest = r.choice(taxis)
         return nearest
 
@@ -55,7 +53,7 @@ class Client(me.Document):
         taxis = TaxiCar.objects.filter(status=StatusTaxi.AVAILABLE,
             geo__geo_within_center=[self.geo_from['coordinates'], RADIUS],
             price_level = price)
-        # find the nearest taxi car
+        # should be find the nearest taxi car
         nearest = r.choice(taxis)
         return nearest        
 
@@ -96,13 +94,13 @@ def fill_db(clients: int, cars: int):
         Client(first_name=r.choice(names), last_name=r.choice(surnames),
             geo_from={'type': 'Point', 'coordinates': [r.uniform(56.25, 56.35), r.uniform(44.08, 43.90)]},
             geo_to={'type': 'Point', 'coordinates': [r.uniform(56.25, 56.35), r.uniform(44.08, 43.90)]}).save()
-    for i in range(cars // 2):
+    for i in range(cars // 2): # Half of them has any status
         TaxiCar(reg_number=r.choice(reg_numbers),
             model=r.choice(models),
             status=r.choice([i for i in StatusTaxi]),
             price_level=r.choice([i for i in TaxiPrice]),
             geo={'type': 'Point', 'coordinates': [r.uniform(56.25, 56.35), r.uniform(44.08, 43.90)]}).save()
-    for i in range(cars // 2 + cars % 2):
+    for i in range(cars // 2 + cars % 2): # The second half of them has status 'AVAILABLE'
         TaxiCar(reg_number=r.choice(reg_numbers),
             model=r.choice(models),
             status=StatusTaxi.AVAILABLE,
@@ -111,7 +109,6 @@ def fill_db(clients: int, cars: int):
     for i in TaxiCar.objects.filter(status=StatusTaxi.WITH_CLIENT):
         i.client = r.choice(Client.objects()).pk
         i.save()
-
 
 
 conn = me.connect('test', username='test', password='onlytest')
@@ -134,4 +131,3 @@ print("==============================")
 print("Taxis:")
 for taxi in TaxiCar.objects():
     print(taxi)
-

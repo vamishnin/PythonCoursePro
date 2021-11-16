@@ -1,7 +1,7 @@
 # Подключаемся к базе MongoDB на локальной машине
 import mongoengine as me
 
-conn = me.connect('test', username='test', password='onlytest')
+conn = me.connect('test')
 print(conn)
 
 
