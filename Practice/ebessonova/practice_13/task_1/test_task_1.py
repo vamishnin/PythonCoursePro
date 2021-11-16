@@ -1,20 +1,26 @@
-import unittest
+import pytest
 import task_1
 
 
-class TestToRoman(unittest.TestCase):
+@pytest.fixture(scope="function", params=[
+    (-4, 'Input error'),
+    (5001, 'Input error'),
+    (5, 'V'),
+    (69, 'LXIX'),
+    (678, 'DCLXXVIII'),
+    (1001, 'MI'),
+    (4999, 'MMMMCMXCIX')
+])
+def param_test(request):
+    return request.param
 
-    def test_input(self):
-        assert (task_1.to_roman(-4) == 'Input error')
-        assert (task_1.to_roman(50001) == 'Input error')
 
-    def test_convertion(self):
-        assert (task_1.to_roman(5) == 'V')
-        assert (task_1.to_roman(69) == 'LXIX')
-        assert (task_1.to_roman(678) == 'DCLXXVIII')
-        assert (task_1.to_roman(1001) == 'MI')
-        assert (task_1.to_roman(4999) == 'MMMMCMXCIX')
+def test_to_roman(param_test):
+    (input_num, expected_output) = param_test
+    result = task_1.to_roman(input_num)
+    print(f'arabic: {input_num}, roman: {result}, expected roman: {expected_output}')
+    assert result == expected_output
 
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
