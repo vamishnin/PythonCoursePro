@@ -6,7 +6,10 @@ THOUSANDS = ("", "M", "MM", "MMM", "MMMM", "MMMMM")
 
 def to_roman(arabic_num):
 
-    if arabic_num < 1 or arabic_num > 5000:
+    try:
+        if arabic_num < 1 or arabic_num > 5000:
+            raise ValueError
+    except ValueError:
         return 'Input error'
 
     first = THOUSANDS[arabic_num // 1000]
