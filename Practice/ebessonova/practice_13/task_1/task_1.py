@@ -4,13 +4,14 @@ HUNDREDS = ("", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM")
 THOUSANDS = ("", "M", "MM", "MMM", "MMMM", "MMMMM")
 
 
+class NonValidInput(Exception):
+    pass
+
+
 def to_roman(arabic_num):
 
-    try:
-        if arabic_num < 1 or arabic_num > 5000:
-            raise ValueError
-    except ValueError:
-        return 'Input error'
+    if arabic_num < 1 or arabic_num > 5000:
+        raise NonValidInput
 
     first = THOUSANDS[arabic_num // 1000]
     second = HUNDREDS[arabic_num // 100 % 10]

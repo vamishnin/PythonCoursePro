@@ -22,10 +22,11 @@ class TestToRoman:
         return request.param
 
     def test_wrong_input(self, param_test_neg):
-        (input_num, expected_output) = param_test_neg
-        result = task_1.to_roman(input_num)
-        print(f'arabic: {input_num}, output: {result}, expected output: {expected_output}')
-        assert result == expected_output
+        with pytest.raises(task_1.NonValidInput):
+            (input_num, expected_output) = param_test_neg
+            result = task_1.to_roman(input_num)
+            print(f'arabic: {input_num}, output: {result}, expected output: {expected_output}')
+            assert result == expected_output
 
     def test_to_roman(self, param_test_pos):
         (input_num, expected_output) = param_test_pos
