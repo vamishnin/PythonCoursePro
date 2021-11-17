@@ -6,17 +6,8 @@ import os.path
 
 
 def copyfile(source, destination):
-    try:
-        with open(source, 'r') as src_file:
-            src = src_file.read()
-            if os.path.exists(destination):
-                raise FileExistsError
-            else:
-                with open(destination, 'x') as dst_file:
-                    dst_file.write(src)
-    except FileNotFoundError:
-        print(f'Файл {source} не найден')
-    except FileExistsError:
-        print(f'Файл {destination} уже существует')
+    with open(source, 'r') as src_file:
+        with open(destination, 'x') as dst_file:
+            dst_file.writelines(src_file)
 
 copyfile('Teory.txt', 't1.txt')

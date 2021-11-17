@@ -17,7 +17,17 @@ print(rever2(ll2))
 def reversed(lst: list):
     return lst[::-1]
 
+# Третий вариант, без вспомогательного списка с перекидыванием значений
+def r3(s):
+    half = len(s) // 2
+    i = 0
+    while i < half:
+        s[i], s[-i-1] = s[-i-1], s[i]
+        i += 1
+    return s
+
 ll3 = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-print (reversed(ll3))
-ll4 = 'abcdef'
-print(reversed(ll4))
+# print (reversed(ll3))
+# ll4 = 'abcdef'
+# print(reversed(ll4))
+print(r3(ll3))
